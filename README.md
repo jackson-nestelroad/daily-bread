@@ -4,7 +4,7 @@
 
 _This project is not affiliated with [Bible Gateway](http://biblegateway.com)._
 
-**Daily Bread** is a TypeScript library for reading the Bible. It is currently implemented by reading from [Bible Gateway](http://biblegateway.com).
+**DailyBread** is a TypeScript library for reading the Bible. It is currently implemented by reading from [Bible Gateway](http://biblegateway.com).
 
 ```ts
 const bible = new DailyBread();
