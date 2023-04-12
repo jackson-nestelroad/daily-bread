@@ -34,9 +34,7 @@ Output:
 To install, simply run the following command:
 
 ```
-
 npm install --save daily-bread
-
 ```
 
 ## Usage
