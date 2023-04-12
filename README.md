@@ -1,5 +1,7 @@
 # DailyBread
 
+<a href="https://www.npmjs.com/package/daily-bread"><img src="https://img.shields.io/npm/v/daily-bread.svg?maxAge=3600" alt="NPM version" /></a>
+
 _This project is not affiliated with [Bible Gateway](http://biblegateway.com)._
 
 **Daily Bread** is a TypeScript library for reading the Bible. It is currently implemented by reading from [Bible Gateway](http://biblegateway.com).
