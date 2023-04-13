@@ -180,7 +180,7 @@ export enum CanonBook {
   FirstTimothy = '1TIM',
   SecondTimothy = '2TIM',
   Titus = 'TITUS',
-  Philemon = 'PHIL',
+  Philemon = 'PHLM',
   Hebrews = 'HEB',
   James = 'JAM',
   FirstPeter = '1PET',
