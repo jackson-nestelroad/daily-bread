@@ -10,6 +10,9 @@
     "christian"
   ],
   "files": [
+    "build/cli/**/*.js",
+    "build/cli/**/*.js.map",
+    "build/cli/**/*.d.ts",
     "build/src/**/*.js",
     "build/src/**/*.js.map",
     "build/src/**/*.d.ts",
