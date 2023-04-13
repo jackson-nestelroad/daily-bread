@@ -17,5 +17,5 @@ export { CanonBooks, CanonNameLookup, DeuterocanonBooks, DeuterocanonNameLookup,
 export { DailyBread } from './daily-bread';
 export { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
 export { PassageReference, Reference } from './reference';
-export { BibleGatewayWebScraper } from './scraper';
+export { BibleGatewayWebScraper, BibleReader } from './scraper';
 export { VersionData, Versions, findVersion } from './versions';
