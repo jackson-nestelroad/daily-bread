@@ -70,4 +70,13 @@ describe('splitRange', () => {
   it('should return empty range when start greater than end', () => {
     assert.deepEqual(splitRange([2, 1], 4), []);
   });
+
+  it('should return single number range at end', () => {
+    assert.deepEqual(splitRange([2, 14], 4), [
+      [2, 5],
+      [6, 9],
+      [10, 13],
+      [14, 14],
+    ]);
+  });
 });

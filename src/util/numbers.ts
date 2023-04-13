@@ -72,7 +72,7 @@ export function replaceSuperscriptNumber(str: string, replacement: string): stri
  */
 export function splitRange([start, end]: [number, number], chunkSize: number): [number, number][] {
   const ranges: [number, number][] = [];
-  while (end - start > chunkSize) {
+  while (end - start + 1 > chunkSize) {
     ranges.push([start, start + chunkSize - 1]);
     start += chunkSize;
   }
