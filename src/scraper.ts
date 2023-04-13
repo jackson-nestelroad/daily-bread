@@ -18,9 +18,17 @@ enum Markers {
 }
 
 /**
+ * Interface for reading the Bible from some source.
+ */
+export interface BibleReader {
+  passages(search: string): Promise<Passage[]>;
+  options: PassageFormattingOptions;
+}
+
+/**
  * Web scraper for the Bible Gateway website.
  */
-export class BibleGatewayWebScraper {
+export class BibleGatewayWebScraper implements BibleReader {
   /**
    * Constructs a new web scraper for the given version and formatting options.
    *
