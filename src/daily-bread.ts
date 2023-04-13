@@ -1,7 +1,8 @@
+import { BookData } from './bible';
 import { findBook } from './books';
 import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
 import { PassageReference, cleanPassageReference, formatPassageReference, parsePassageReferences } from './reference';
-import { BibleGatewayWebScraper } from './scraper';
+import { BibleGatewayWebScraper, BibleReader } from './scraper';
 import { splitRange } from './util/numbers';
 import { DefaultVersion, VersionData, findVersion } from './versions';
 
@@ -71,13 +72,25 @@ export class DailyBread {
   }
 
   /**
+   * Returns data for a book of the Bible.
+   *
+   * Books may be searched by name (case insensitive), abbreviation, or alias.
+   * @param book Name of the book.
+   * @returns `BookData`, or `null` if not found.
+   */
+  public getBook(book: string): BookData | null {
+    return findBook(book, this.version.language, this.version.deuterocanon);
+  }
+
+  /**
    * Gets one passage of the Bible.
    * @param passage Passage to search for.
    * @returns A single passage.
    */
   public async getOne(passage: GetSingleType): Promise<Passage> {
-    const passages = await this.get(passage);
-    return passages[0];
+    const references = this.getPassageReferenceFromUserInput(passage);
+    const passages = await this.getPassages(references.length > 0 ? [references[0]] : []);
+    return passages?.[0] ?? null;
   }
 
   /**
@@ -89,23 +102,24 @@ export class DailyBread {
    * @returns An array of passages.
    */
   public async get(passage: GetType): Promise<Passage[]> {
+    return await this.getPassages(this.getPassageReferenceFromUserInput(passage));
+  }
+
+  private getPassageReferenceFromUserInput(passage: GetType): PassageReference[] {
     if (typeof passage === 'string') {
-      const passages = parsePassageReferences(passage);
-      return await this.getPassages(passages);
+      return parsePassageReferences(passage);
     } else if (typeof passage === 'object') {
       if (Array.isArray(passage)) {
-        return await this.getPassages(
-          passage
-            .map(passage => {
-              if (typeof passage === 'string') {
-                return parsePassageReferences(passage);
-              }
-              return passage;
-            })
-            .flat(),
-        );
+        return passage
+          .map(passage => {
+            if (typeof passage === 'string') {
+              return parsePassageReferences(passage);
+            }
+            return passage;
+          })
+          .flat();
       } else {
-        return await this.getPassages([passage]);
+        return [passage];
       }
     }
   }
@@ -125,8 +139,8 @@ export class DailyBread {
     cleanPassageReference(passage, book, this.version.language);
     const reference = formatPassageReference(passage);
 
-    const endChapter = passage.to?.chapter ?? passage.from?.chapter ?? book.chapters;
-    const startChapter = passage.from?.chapter ?? 1;
+    let startChapter = passage.from?.chapter ?? 1;
+    let endChapter = passage.to?.chapter ?? passage.from?.chapter ?? book.chapters;
     const startVerse = passage.from?.verse ?? 1;
     const endVerse = passage.to?.verse ?? passage.from?.verse ?? DailyBread.MaxVerseNumber;
 
@@ -135,14 +149,29 @@ export class DailyBread {
       // Our passage resides in one chapter, just make a single call to the scraper.
       promises.push(this.scraper.passages(`${passage.book} ${startChapter}:${startVerse}-${endVerse}`));
     } else {
-      // Our passage spans multiple chapters.
-      // Get the verse range in first chapter, all the chapters in between, and the verse range in the last chapter.
-      promises.push(
-        this.scraper.passages(`${passage.book} ${startChapter}:${startVerse}-${DailyBread.MaxVerseNumber}`),
+      let index = 0;
+
+      // If we are getting a partial part of the start or end chapter, get them separately.
+      // If not, include them in how we split the chapter into multple ranges to fetch.
+
+      if (startVerse !== 1) {
+        promises.push(
+          this.scraper.passages(`${passage.book} ${startChapter}:${startVerse}-${DailyBread.MaxVerseNumber}`),
+        );
+        ++startChapter;
+        ++index;
+      }
+      if (endVerse !== DailyBread.MaxVerseNumber) {
+        promises.push(this.scraper.passages(`${passage.book} ${endChapter}:1-${endVerse}`));
+        --endChapter;
+      }
+
+      const chapterRanges = splitRange([startChapter, endChapter], DailyBread.ChaptersPerCall);
+      promises.splice(
+        index,
+        0,
+        ...chapterRanges.map(([a, b]) => this.scraper.passages(`${passage.book} ${a === b ? a : `${a}-${b}`}`)),
       );
-      const chapterRanges = splitRange([startChapter + 1, endChapter - 1], DailyBread.ChaptersPerCall);
-      promises.push(...chapterRanges.map(([a, b]) => this.scraper.passages(`${passage.book} ${a}-${b}`)));
-      promises.push(this.scraper.passages(`${passage.book} ${endChapter}:1-${endVerse}`));
     }
 
     const passages = await Promise.all(promises);
@@ -159,8 +188,8 @@ export class DailyBread {
   }
 
   private static readonly MaxVerseNumber = 200;
-  private static readonly ChaptersPerCall = 4;
+  private static readonly ChaptersPerCall = 5;
 
-  private scraper: BibleGatewayWebScraper;
+  private scraper: BibleReader;
   private version: VersionData;
 }
