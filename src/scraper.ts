@@ -3,6 +3,7 @@ import * as cheerio from 'cheerio';
 
 import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
 import { removeSuperscriptNumbers, replaceNumbersWithSuperscript, replaceSuperscriptNumber } from './util/numbers';
+import { applyDefaults } from './util/options';
 import { addPoetryPaddingToLine, convertUnicodePunctuationToAscii, trimWhitespace } from './util/strings';
 
 enum UrlConstant {
@@ -43,12 +44,7 @@ export class BibleGatewayWebScraper implements BibleReader {
     this.axios = new Axios({
       baseURL: UrlConstant.Home,
     });
-    for (const name of Object.keys(DefaultPassageFormattingOptions) as (keyof PassageFormattingOptions)[]) {
-      if (this.options[name] === undefined) {
-        (this.options[name] as PassageFormattingOptions[keyof PassageFormattingOptions]) =
-          DefaultPassageFormattingOptions[name];
-      }
-    }
+    applyDefaults(this.options, DefaultPassageFormattingOptions);
   }
 
   /**
