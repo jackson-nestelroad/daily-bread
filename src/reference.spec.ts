@@ -340,6 +340,43 @@ describe('cleanPassageReference', () => {
     });
     assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: {} });
   });
+
+  it('should fail book and end chapter past end of book', () => {
+    const reference: PassageReference = { book: 'GEN', from: { chapter: 51 } };
+    assert.throws(() => {
+      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
+    });
+  });
+
+  it('should pass book, start chapter, and end chapter past end of book', () => {
+    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 51 } };
+    assert.doesNotThrow(() => {
+      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
+    });
+    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 50 } });
+  });
+
+  it('should pass book, start chapter, end chapter past end of book, and end verse', () => {
+    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 51, verse: 50 } };
+    assert.doesNotThrow(() => {
+      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
+    });
+    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 50 } });
+  });
+
+  it('should fail book and chapter range invalid', () => {
+    const reference: PassageReference = { book: 'GEN', from: { chapter: 3 }, to: { chapter: 1 } };
+    assert.throws(() => {
+      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
+    });
+  });
+
+  it('should fail book and verse range invalid', () => {
+    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 20 }, to: { chapter: 1, verse: 1 } };
+    assert.throws(() => {
+      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
+    });
+  });
 });
 
 describe('formatPassageReference', () => {

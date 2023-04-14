@@ -71,6 +71,10 @@ function emptyReference(reference: Reference): boolean {
   );
 }
 
+function isDefined(val: any): boolean {
+  return val !== null && val !== undefined;
+}
+
 /**
  * Cleans and validates a passage reference so that it can be properly formatted.
  * @param passage `PassageReference`, modified directly.
@@ -92,32 +96,51 @@ export function cleanPassageReference(passage: PassageReference, book: BookData,
     return;
   }
 
-  if ((passage.from.chapter === null || passage.from.chapter === undefined) && book.chapters !== 1) {
+  if (!isDefined(passage.from.chapter) && book.chapters !== 1) {
     throw new Error('Missing start chapter');
-  } else if (passage.from.chapter !== null && passage.from.chapter !== undefined && book.chapters === 1) {
-    delete passage.from.chapter;
+  } else if (isDefined(passage.from.chapter)) {
+    if (book.chapters === 1) {
+      delete passage.from.chapter;
+    } else if (passage.from.chapter > book.chapters) {
+      throw new Error('Chapter not found');
+    }
   }
 
-  if (passage.to.chapter !== null && passage.to.chapter !== undefined) {
+  if (isDefined(passage.to.chapter)) {
     if (passage.to.chapter === passage.from.chapter || book.chapters === 1) {
       delete passage.to.chapter;
+    } else if (passage.to.chapter > book.chapters) {
+      if (passage.to.chapter !== passage.from.chapter) {
+        // Do not allow chapter number to exceed end of book.
+        passage.to.chapter = book.chapters;
+        if (isDefined(passage.to.verse)) {
+          delete passage.to.verse;
+        }
+      } else {
+        throw new Error('Chapter not found');
+      }
     }
-    if (
-      passage.from.verse &&
-      passage.from.chapter !== passage.to.chapter &&
-      (passage.to.verse == null || passage.to.verse === undefined)
-    ) {
+    if (isDefined(passage.from.verse) && passage.from.chapter !== passage.to.chapter && !isDefined(passage.to.verse)) {
       throw new Error('Must specify end verse in end chapter');
     }
   }
 
-  if (passage.to.verse !== null && passage.to.verse !== undefined) {
+  if (isDefined(passage.to.verse)) {
     if (passage.to.verse === passage.from.verse) {
       delete passage.to.verse;
-    } else if (passage.from.verse === null || passage.from.verse === undefined) {
+    } else if (!isDefined(passage.from.verse)) {
       // Must assign the start verse since we have an end verse.
       passage.from.verse = 1;
     }
+  }
+
+  if (isDefined(passage.from.chapter) && isDefined(passage.to.chapter)) {
+    if (passage.to.chapter < passage.from.chapter) {
+      throw new Error('Invalid chapter range');
+    }
+  } else if (passage.to.verse < passage.from.verse) {
+    // At this point, both chapters are defined only if they are not equal.
+    throw new Error('Invalid verse range');
   }
 }
 
