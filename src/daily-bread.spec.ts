@@ -305,6 +305,31 @@ describe('DailyBread', () => {
       expectPromiseRejects(bible.get('John 1-12', { strict: true }), 'Passage not found');
       scraper.verify();
     });
+
+    it('should fail deuterocanon in non-supported version', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPromiseRejects(bible.get('Baruch 1', { strict: true }), 'Book not found');
+      scraper.verify();
+    });
+
+    it('should allow deuterocanon in supported version', async () => {
+      const bible = new DailyBread();
+      bible.setVersion('CEB');
+      const scraper = mock(bible['scraper']);
+      expectPassageRead(scraper, {
+        reference: 'Baruch 1:1-200',
+        text: 'Deuterocanon text',
+      });
+      const passages = await bible.get('Baruch 1', { strict: true });
+      assert.deepEqual(passages, [
+        {
+          reference: 'Baruch 1',
+          text: 'Deuterocanon text',
+        },
+      ]);
+      scraper.verify();
+    });
   });
 
   describe('getOne', () => {
