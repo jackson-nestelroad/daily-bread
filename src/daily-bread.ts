@@ -170,7 +170,7 @@ export class DailyBread {
   }
 
   private async getPassage(passage: PassageReference): Promise<Passage> {
-    const book = findBook(passage.book, this.version.language);
+    const book = findBook(passage.book, this.version.language, this.version.deuterocanon);
     if (!book) {
       throw new Error(`Invalid book: ${passage.book}`);
     }
