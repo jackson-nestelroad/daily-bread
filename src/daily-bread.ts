@@ -4,6 +4,7 @@ import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } fr
 import { PassageReference, cleanPassageReference, formatPassageReference, parsePassageReferences } from './reference';
 import { BibleGatewayWebScraper, BibleReader } from './scraper';
 import { splitRange } from './util/numbers';
+import { applyDefaults } from './util/options';
 import { DefaultVersion, VersionData, findVersion } from './versions';
 
 /**
@@ -15,6 +16,27 @@ export type GetSingleType = string | PassageReference;
  * The type for getting one or more passages of the Bible.
  */
 export type GetType = GetSingleType | GetSingleType[];
+
+/**
+ * Options for getting passages.
+ */
+export interface GetOptions {
+  /**
+   * Whether or not reject the whole operation if a single passage fails.
+   * Default is false.
+   *
+   * If enabled, when a passage fails, the whole operation fails.
+   * If disabled, when a passage fails, it is ignored, and all successful passages are still returned.
+   */
+  strict?: boolean;
+}
+
+/**
+ * Default passage options.
+ */
+export const DefaultGetOptions: Required<GetOptions> = {
+  strict: false,
+};
 
 /**
  * API for reading the Bible.
@@ -89,8 +111,14 @@ export class DailyBread {
    */
   public async getOne(passage: GetSingleType): Promise<Passage> {
     const references = this.getPassageReferenceFromUserInput(passage);
-    const passages = await this.getPassages(references.length > 0 ? [references[0]] : []);
-    return passages?.[0] ?? null;
+    if (references.length === 0) {
+      throw new Error('Passage not found');
+    }
+    const passages = await this.getPassages([references[0]], { strict: true });
+    if (passages.length === 0) {
+      throw new Error('Passage not found');
+    }
+    return passages[0];
   }
 
   /**
@@ -98,11 +126,14 @@ export class DailyBread {
    *
    * The `passage` parameter can be a string, a `PassageReference` object, or an array of strings and `PassageReference`
    * objects.
+   *
+   * Returns an empty array if no passages are found, unless strict mode is enabled (see `GetOptions`).
    * @param passage Passages to search for.
+   * @param options Passage options.
    * @returns An array of passages.
    */
-  public async get(passage: GetType): Promise<Passage[]> {
-    return await this.getPassages(this.getPassageReferenceFromUserInput(passage));
+  public async get(passage: GetType, options: GetOptions = {}): Promise<Passage[]> {
+    return await this.getPassages(this.getPassageReferenceFromUserInput(passage), options);
   }
 
   private getPassageReferenceFromUserInput(passage: GetType): PassageReference[] {
@@ -124,9 +155,18 @@ export class DailyBread {
     }
   }
 
-  private async getPassages(passages: PassageReference[]): Promise<Passage[]> {
+  private async getPassages(passages: PassageReference[], options: GetOptions): Promise<Passage[]> {
+    applyDefaults(options, DefaultGetOptions);
     const promises = passages.map(passage => this.getPassage(passage));
-    return await Promise.all(promises);
+    if (options.strict) {
+      return await Promise.all(promises);
+    }
+
+    const settled = await Promise.allSettled(promises);
+    // Only return passages that yielded a result. Errors are ignored.
+    return settled
+      .filter(promise => promise.status === 'fulfilled')
+      .map(promise => (promise as PromiseFulfilledResult<Passage>).value);
   }
 
   private async getPassage(passage: PassageReference): Promise<Passage> {
@@ -141,6 +181,7 @@ export class DailyBread {
 
     let startChapter = passage.from?.chapter ?? 1;
     let endChapter = passage.to?.chapter ?? passage.from?.chapter ?? book.chapters;
+
     const startVerse = passage.from?.verse ?? 1;
     const endVerse = passage.to?.verse ?? passage.from?.verse ?? DailyBread.MaxVerseNumber;
 
@@ -175,6 +216,11 @@ export class DailyBread {
     }
 
     const passages = await Promise.all(promises);
+
+    // If any of our requests resulted in no passages, something went wrong.
+    if (passages.some(passage => passage.length === 0)) {
+      throw new Error('Passage not found');
+    }
 
     // Join the text together to make one large passage.
     const text = passages

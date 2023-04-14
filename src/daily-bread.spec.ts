@@ -13,6 +13,28 @@ function expectPassageRead(scraper: SinonMock, passage: Passage) {
     .returns(new Promise(resolve => resolve([passage])));
 }
 
+function expectPassageNotFound(scraper: SinonMock, reference: string) {
+  scraper
+    .expects('passages')
+    .withExactArgs(reference)
+    .once()
+    .returns(new Promise(resolve => resolve([])));
+}
+
+function expectPromiseRejects<T>(promise: Promise<T>, errMsgMatcher?: string | RegExp): void {
+  promise
+    .then(() => assert.fail('expected promise to reject'))
+    .catch(err => {
+      if (errMsgMatcher) {
+        const errMsg: string = err?.toString();
+        if (!errMsg) {
+          assert.fail('could not convert promise error to string');
+        }
+        assert.isTrue(!!errMsg.match(errMsgMatcher), `expected "${errMsg}" to contain "${errMsgMatcher}"`);
+      }
+    });
+}
+
 describe('DailyBread', () => {
   describe('get', () => {
     it('should make a single read for a single chapter', async () => {
@@ -207,11 +229,80 @@ describe('DailyBread', () => {
       scraper.verify();
     });
 
+    it('should use actual chapter end', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPassageRead(scraper, {
+        reference: 'Colossians 1-4',
+        text: 'Colossians 1-4',
+      });
+      const passages = await bible.get('Colossians 1-5');
+      assert.deepEqual(passages, [
+        {
+          reference: 'Colossians 1-4',
+          text: 'Colossians 1-4',
+        },
+      ]);
+      scraper.verify();
+    });
+
     it('returns empty array for no reference in input', async () => {
       const bible = new DailyBread();
       const scraper = mock(bible['scraper']);
       const passages = await bible.get('');
       assert.isEmpty(passages);
+      scraper.verify();
+    });
+
+    it('should return empty array for no passages found', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      const passages = await bible.get('notabook, 1:2, good luck finding anything');
+      assert.isEmpty(passages);
+      scraper.verify();
+    });
+
+    it('should throw in strict mode', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPromiseRejects(bible.get('notabook', { strict: true }));
+      scraper.verify();
+    });
+
+    it('should fail invalid book', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPromiseRejects(bible.get('notabook', { strict: true }), 'Book not found');
+      scraper.verify();
+    });
+
+    it('should fail invalid chapter', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPromiseRejects(bible.get('Revelation 23', { strict: true }), 'Chapter not found');
+      scraper.verify();
+    });
+
+    it('should fail if passage not found', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPromiseRejects(bible.get('2 Cor 1:67', { strict: true }), 'Passage not found');
+      scraper.verify();
+    });
+
+    it('should fail if part of passage not found', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPassageRead(scraper, {
+        reference: 'John 1-5',
+        text: 'John 1-5',
+      });
+      expectPassageNotFound(scraper, 'John 6-10');
+      expectPassageRead(scraper, {
+        reference: 'John 11-12',
+        text: 'John 11-12',
+      });
+      expectPromiseRejects(bible.get('John 1-12', { strict: true }), 'Passage not found');
       scraper.verify();
     });
   });
@@ -232,11 +323,18 @@ describe('DailyBread', () => {
       scraper.verify();
     });
 
-    it('returns null for no reference in input', async () => {
+    it('rejects for no reference in input', async () => {
       const bible = new DailyBread();
       const scraper = mock(bible['scraper']);
-      const passage = await bible.getOne('');
-      assert.isNull(passage);
+      expectPromiseRejects(bible.getOne(''), 'Passage not found');
+      scraper.verify();
+    });
+
+    it('rejects for passage not found', async () => {
+      const bible = new DailyBread();
+      const scraper = mock(bible['scraper']);
+      expectPassageNotFound(scraper, 'Genesis 1:1-200');
+      expectPromiseRejects(bible.getOne('Gen 1'), 'Passage not found');
       scraper.verify();
     });
   });

@@ -36,7 +36,7 @@ export interface PassageFormattingOptions {
 }
 
 /**
- * Default passage options.
+ * Default passage formatting options.
  */
 export const DefaultPassageFormattingOptions: Required<PassageFormattingOptions> = {
   paragraphSpacing: 2,
