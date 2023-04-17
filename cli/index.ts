@@ -124,7 +124,7 @@ yargs(hideBin(process.argv))
   .command(
     'books',
     'List all books of the Bible.',
-    yargs => {},
+    () => {},
     yargs =>
       runCommand(async () => {
         const bible = createDailyBread({
