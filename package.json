@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node build/src/index.js",
-    "test": "npm run build && mocha --parallel build/*.spec.js build/**/*.spec.js",
+    "test": "npm run build && mocha --parallel --recursive build/src",
     "cli": "npm run build && node build/cli/index.js",
     "dryrun": "npm pack --dry-run"
   },
