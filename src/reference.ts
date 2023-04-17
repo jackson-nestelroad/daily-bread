@@ -18,7 +18,7 @@ export interface PassageReference {
 }
 
 const PassageReferenceRegex =
-  /((?:psalm\s*151)|(?:(?:\d+\s*)?[^\s\d:,;.-][^\d:,;.-]*))\s*(?:(\d+)(?::(\d+))?(?:\s*-\s*(\d+)(?::(\d+))?)?)?/gi;
+  /((?:ps(?:a(?:lm)?)?\s*151)|(?:(?:\d+\s*)?[^\s\d:,;.-][^\d:,;.-]*))\s*(?:(\d+)(?::(\d+))?(?:\s*-\s*(\d+)(?::(\d+))?)?)?/gi;
 
 /**
  * Parses all passage references found in the given string.
