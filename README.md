@@ -202,6 +202,18 @@ Output:
 ]
 ```
 
+## CLI
+
+A CLI that uses DailyBread comes bundled with the NPM package. It can be called from the command line using `npx daily-bread`.
+
+```
+npx daily-bread -v esv rom 12
+
+npx daily-bread book acts of the apostles
+
+npx daily-bread books
+```
+
 ## Features
 
 - `DailyBread` class
