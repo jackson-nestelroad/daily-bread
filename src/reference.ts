@@ -18,7 +18,7 @@ export interface PassageReference {
 }
 
 const PassageReferenceRegex =
-  /((?:\d+\s*)?[^\s\d:,;.-][^\d:,;.-]*)\s*(?:(\d+)(?::(\d+))?(?:\s*-\s*(\d+)(?::(\d+))?)?)?/g;
+  /((?:psalm\s*151)|(?:(?:\d+\s*)?[^\s\d:,;.-][^\d:,;.-]*))\s*(?:(\d+)(?::(\d+))?(?:\s*-\s*(\d+)(?::(\d+))?)?)?/gi;
 
 /**
  * Parses all passage references found in the given string.
@@ -96,20 +96,28 @@ export function cleanPassageReference(passage: PassageReference, book: BookData,
     return;
   }
 
-  if (!isDefined(passage.from.chapter) && book.chapters !== 1) {
-    throw new Error('Missing start chapter');
-  } else if (isDefined(passage.from.chapter)) {
-    if (book.chapters === 1) {
-      delete passage.from.chapter;
-    } else if (passage.from.chapter > book.chapters) {
-      throw new Error('Chapter not found');
+  if (!isDefined(passage.from.chapter)) {
+    if (book.chapters !== 1) {
+      throw new Error('Missing start chapter');
     }
+  } else if (book.chapters === 1) {
+    if (passage.from.chapter !== 1) {
+      passage.from.verse = passage.from.chapter;
+    }
+    delete passage.from.chapter;
+  } else if (passage.from.chapter < 1 || passage.from.chapter > book.chapters) {
+    throw new Error('Chapter not found');
   }
 
   if (isDefined(passage.to.chapter)) {
-    if (passage.to.chapter === passage.from.chapter || book.chapters === 1) {
+    if (passage.to.chapter === passage.from.chapter) {
       delete passage.to.chapter;
-    } else if (passage.to.chapter > book.chapters) {
+    } else if (book.chapters === 1) {
+      if (passage.to.chapter !== 1) {
+        passage.to.verse = passage.to.chapter;
+      }
+      delete passage.to.chapter;
+    } else if (passage.to.chapter < 1 || passage.to.chapter > book.chapters) {
       if (passage.to.chapter !== passage.from.chapter) {
         // Do not allow chapter number to exceed end of book.
         passage.to.chapter = book.chapters;
@@ -125,21 +133,34 @@ export function cleanPassageReference(passage: PassageReference, book: BookData,
     }
   }
 
+  if (isDefined(passage.from.verse) && passage.from.verse < 1) {
+    throw new Error('Invalid start verse');
+  }
+
   if (isDefined(passage.to.verse)) {
     if (passage.to.verse === passage.from.verse) {
       delete passage.to.verse;
+    } else if (passage.to.verse < 1) {
+      throw new Error('Invalid end verse');
     } else if (!isDefined(passage.from.verse)) {
       // Must assign the start verse since we have an end verse.
       passage.from.verse = 1;
+      if (passage.from.chapter === passage.to.chapter && passage.to.verse === 1) {
+        delete passage.to.verse;
+      }
     }
   }
 
-  if (isDefined(passage.from.chapter) && isDefined(passage.to.chapter)) {
-    if (passage.to.chapter < passage.from.chapter) {
-      throw new Error('Invalid chapter range');
-    }
-  } else if (passage.to.verse < passage.from.verse) {
-    // At this point, both chapters are defined only if they are not equal.
+  if (isDefined(passage.from.chapter) && isDefined(passage.to.chapter) && passage.to.chapter < passage.from.chapter) {
+    throw new Error('Invalid chapter range');
+  }
+
+  if (
+    isDefined(passage.from.verse) &&
+    isDefined(passage.to.verse) &&
+    (!isDefined(passage.to.chapter) || passage.from.chapter === passage.to.chapter) &&
+    passage.to.verse < passage.from.verse
+  ) {
     throw new Error('Invalid verse range');
   }
 }

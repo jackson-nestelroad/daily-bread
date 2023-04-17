@@ -138,244 +138,295 @@ describe('parsePassageReferences', () => {
       ],
     );
   });
+
+  it('should parse psalm 151', () => {
+    assert.deepEqual(parsePassageReferences('Psalm 151, psalm151 1-2'), [
+      {
+        book: 'Psalm 151',
+        from: {},
+        to: {},
+      },
+      {
+        book: 'psalm151',
+        from: { chapter: 1 },
+        to: { chapter: 2 },
+      },
+    ]);
+  });
 });
 
 describe('cleanPassageReference', () => {
-  it('should pass empty object', () => {
-    const reference = {} as PassageReference;
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: {}, to: {} });
+  it('should clean references in books with multiple chapters', () => {
+    const testCases: { input: PassageReference; pass: boolean; output?: PassageReference }[] = [
+      {
+        input: {} as PassageReference,
+        pass: true,
+        output: { book: 'Genesis', from: {}, to: {} },
+      },
+      {
+        input: { book: 'GEN' },
+        pass: true,
+        output: { book: 'Genesis', from: {}, to: {} },
+      },
+      {
+        input: { book: 'GEN', from: {} },
+        pass: true,
+        output: { book: 'Genesis', from: {}, to: {} },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1 }, to: {} },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 51 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { verse: 2 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1, verse: 2 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1, verse: 2 }, to: {} },
+      },
+      {
+        input: { book: 'GEN', to: {} },
+        pass: true,
+        output: { book: 'Genesis', from: {}, to: {} },
+      },
+      {
+        input: { book: 'GEN', to: { chapter: 3 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', to: { verse: 4 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', to: { chapter: 3, verse: 4 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: {}, to: {} },
+        pass: true,
+        output: { book: 'Genesis', from: {}, to: {} },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1 }, to: { chapter: 3 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 3 } },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 3 }, to: { chapter: 1 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1 }, to: { chapter: 1 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1 }, to: {} },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1 }, to: { chapter: 51 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 50 } },
+      },
+      {
+        input: { book: 'GEN', from: { verse: 1 }, to: { verse: 3 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { verse: 3 }, to: { verse: 1 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { verse: 1 }, to: { verse: 1 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1, verse: 2 }, to: { chapter: 3, verse: 4 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1, verse: 2 }, to: { chapter: 3, verse: 4 } },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1 }, to: { chapter: 3, verse: 4 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: { chapter: 3, verse: 4 } },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1, verse: 2 }, to: { chapter: 3 } },
+        pass: false,
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1, verse: 2 }, to: { chapter: 1, verse: 4 } },
+        pass: true,
+        output: { book: 'Genesis', from: { chapter: 1, verse: 2 }, to: { verse: 4 } },
+      },
+      {
+        input: { book: 'GEN', from: { chapter: 1, verse: 2 }, to: { chapter: 1, verse: 1 } },
+        pass: false,
+      },
+    ];
+    for (const testCase of testCases) {
+      const original = JSON.stringify(testCase.input);
+      (testCase.pass ? assert.doesNotThrow : assert.throws)(
+        () => {
+          cleanPassageReference(testCase.input, CanonBooks[CanonBook.Genesis], Language.English);
+        },
+        undefined,
+        undefined,
+        `Expected function to ${testCase.pass ? 'pass' : 'fail'} for input ${original}`,
+      );
+      if (testCase.pass && testCase.output) {
+        assert.deepEqual(
+          testCase.input,
+          testCase.output,
+          `Expected ${original} to be converted to ${JSON.stringify(testCase.output)}`,
+        );
+      }
+    }
   });
 
-  it('should pass book alone', () => {
-    const reference: PassageReference = { book: 'GEN' };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: {}, to: {} });
-  });
-
-  it('should pass book and empty start', () => {
-    const reference: PassageReference = { book: 'GEN', from: {} };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: {}, to: {} });
-  });
-
-  it('should pass book and empty end', () => {
-    const reference: PassageReference = { book: 'GEN', to: {} };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: {}, to: {} });
-  });
-
-  it('should pass book, empty start, and empty end', () => {
-    const reference: PassageReference = { book: 'GEN', from: {}, to: {} };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: {}, to: {} });
-  });
-
-  it('should pass book and start chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: {} });
-  });
-
-  it('should fail book and start verse for book with more than one chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { verse: 1 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should pass book and start verse for book with one chapter', () => {
-    const reference: PassageReference = { book: 'OBA', from: { verse: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Obadiah], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Obadiah', from: { verse: 1 }, to: {} });
-  });
-
-  it('should pass book, start chapter, and start verse for book with more than one chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: {} });
-  });
-
-  it('should pass book, start chapter, and start verse for book with one chapter', () => {
-    const reference: PassageReference = { book: 'OBA', from: { chapter: 1, verse: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Obadiah], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Obadiah', from: { verse: 1 }, to: {} });
-  });
-
-  it('should fail book and end chapter', () => {
-    const reference: PassageReference = { book: 'GEN', to: { chapter: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should fail book and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', to: { verse: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should fail book, end chapter, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', to: { chapter: 2, verse: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should pass book, start chapter, and end chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 2 } });
-  });
-
-  it('should pass book and chapters equal for book with more than one chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: {} });
-  });
-
-  it('should pass book and chapters equal for book with one chapter', () => {
-    const reference: PassageReference = { book: 'OBA', from: { chapter: 1 }, to: { chapter: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Obadiah], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Obadiah', from: {}, to: {} });
-  });
-
-  it('should pass book, start chapter, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { verse: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: { verse: 2 } });
-  });
-
-  it('should pass book, start chapter, end chapter, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 2, verse: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: { chapter: 2, verse: 2 } });
-  });
-
-  it('should fail book, start verse, and end chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { verse: 1 }, to: { chapter: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should fail book, start verse, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { verse: 1 }, to: { verse: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should fail book, start verse, end chapter, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { verse: 1 }, to: { chapter: 2, verse: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should pass book, start verse, end chapter, and end verse for book with one chapter', () => {
-    const reference: PassageReference = { book: 'OBA', from: { verse: 1 }, to: { chapter: 2, verse: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Obadiah], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Obadiah', from: { verse: 1 }, to: { verse: 2 } });
-  });
-
-  it('should fail book, start chapter, start verse, and end chapter', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 1 }, to: { chapter: 2 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should pass book, start chapter, start verse, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 1 }, to: { verse: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: { verse: 2 } });
-  });
-
-  it('should pass book, start chapter, start verse, end chapter, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 1 }, to: { chapter: 2, verse: 2 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: { chapter: 2, verse: 2 } });
-  });
-
-  it('should pass book, start chapter, and verses equal', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 1 }, to: { verse: 1 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1, verse: 1 }, to: {} });
-  });
-
-  it('should fail book and end chapter past end of book', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 51 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should pass book, start chapter, and end chapter past end of book', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 51 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 50 } });
-  });
-
-  it('should pass book, start chapter, end chapter past end of book, and end verse', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1 }, to: { chapter: 51, verse: 50 } };
-    assert.doesNotThrow(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-    assert.deepEqual(reference, { book: 'Genesis', from: { chapter: 1 }, to: { chapter: 50 } });
-  });
-
-  it('should fail book and chapter range invalid', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 3 }, to: { chapter: 1 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
-  });
-
-  it('should fail book and verse range invalid', () => {
-    const reference: PassageReference = { book: 'GEN', from: { chapter: 1, verse: 20 }, to: { chapter: 1, verse: 1 } };
-    assert.throws(() => {
-      cleanPassageReference(reference, CanonBooks[CanonBook.Genesis], Language.English);
-    });
+  it('should clean references in books with one chapter', () => {
+    const testCases: { input: PassageReference; pass: boolean; output?: PassageReference }[] = [
+      {
+        input: {} as PassageReference,
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA' },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: {} },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1 } },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 51 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 51 }, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { verse: 2 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 2 }, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1, verse: 2 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 2 }, to: {} },
+      },
+      {
+        input: { book: 'OBA', to: {} },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', to: { chapter: 3 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', to: { verse: 4 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 4 } },
+      },
+      {
+        input: { book: 'OBA', to: { chapter: 3, verse: 4 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: {}, to: {} },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1 }, to: { chapter: 3 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 3 }, to: { chapter: 1 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 3 }, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1 }, to: { chapter: 1 } },
+        pass: true,
+        output: { book: 'Obadiah', from: {}, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1 }, to: { chapter: 51 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 51 } },
+      },
+      {
+        input: { book: 'OBA', from: { verse: 1 }, to: { verse: 3 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: { verse: 3 }, to: { verse: 1 } },
+        pass: false,
+      },
+      {
+        input: { book: 'OBA', from: { verse: 1 }, to: { verse: 1 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: {} },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1, verse: 2 }, to: { chapter: 3, verse: 4 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 2 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1 }, to: { chapter: 3, verse: 4 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 1 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1, verse: 2 }, to: { chapter: 3 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 2 }, to: { verse: 3 } },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1, verse: 2 }, to: { chapter: 1, verse: 4 } },
+        pass: true,
+        output: { book: 'Obadiah', from: { verse: 2 }, to: { verse: 4 } },
+      },
+      {
+        input: { book: 'OBA', from: { chapter: 1, verse: 2 }, to: { chapter: 1, verse: 1 } },
+        pass: false,
+      },
+    ];
+    for (const testCase of testCases) {
+      const original = JSON.stringify(testCase.input);
+      (testCase.pass ? assert.doesNotThrow : assert.throws)(
+        () => {
+          cleanPassageReference(testCase.input, CanonBooks[CanonBook.Obadiah], Language.English);
+        },
+        undefined,
+        undefined,
+        `Expected function to ${testCase.pass ? 'pass' : 'fail'} for input ${original}`,
+      );
+      if (testCase.pass && testCase.output) {
+        assert.deepEqual(
+          testCase.input,
+          testCase.output,
+          `Expected ${original} to be converted to ${JSON.stringify(testCase.output)}`,
+        );
+      }
+    }
   });
 });
 
