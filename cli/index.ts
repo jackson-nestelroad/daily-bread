@@ -3,11 +3,17 @@ import { exit } from 'process';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { Canon, Category, DailyBread } from '../src';
+import { Canon, Category, DailyBread, Testament } from '../src';
+import { CanonicalOrder, DeuterocanonicalOrder, findBook } from '../src/books';
 
 enum DailyBreadOptions {
   Version = 'version',
   ShowVerseNumbers = 'verse-numbers',
+}
+
+interface DailyBreadCreationOptions {
+  version?: string;
+  showVerseNumbers?: boolean;
 }
 
 function runCommand(fn: () => Promise<void>) {
@@ -17,23 +23,28 @@ function runCommand(fn: () => Promise<void>) {
   });
 }
 
-function createDailyBread(options: { [option: string]: unknown }): DailyBread {
+function createDailyBread(options: DailyBreadCreationOptions): DailyBread {
   const bible = new DailyBread();
-  const version = options[DailyBreadOptions.Version].toString();
-  if (version) {
-    if (!bible.isSupportedVersion(version)) {
-      throw new Error('Unsupported version ' + version);
+  if (options.version) {
+    if (!bible.isSupportedVersion(options.version)) {
+      throw new Error('Unsupported version ' + options.version);
     }
-    bible.setVersion(version);
+    bible.setVersion(options.version);
   }
-  const verseNumbers = !!options[DailyBreadOptions.ShowVerseNumbers];
   bible.setFormatting({
-    showVerseNumbers: verseNumbers,
+    showVerseNumbers: options.showVerseNumbers ?? false,
   });
   return bible;
 }
 
 yargs(hideBin(process.argv))
+  .version(false)
+  .options(DailyBreadOptions.Version, {
+    alias: 'v',
+    type: 'string',
+    describe: 'Bible version',
+    default: 'NIV',
+  })
   .command(
     ['$0 [passages...]', 'read [passages...]'],
     'Read a passage of the Bible',
@@ -53,7 +64,10 @@ yargs(hideBin(process.argv))
     },
     yargs =>
       runCommand(async () => {
-        const bible = createDailyBread(yargs);
+        const bible = createDailyBread({
+          version: yargs.version,
+          showVerseNumbers: yargs.verseNumbers,
+        });
         const userInput = Array.isArray(yargs.passages) ? yargs.passages.join(' ') : yargs.passages;
         if (!userInput) {
           throw new Error('At least one passage is required');
@@ -82,7 +96,9 @@ yargs(hideBin(process.argv))
     },
     yargs =>
       runCommand(async () => {
-        const bible = createDailyBread(yargs);
+        const bible = createDailyBread({
+          version: yargs.version,
+        });
         yargs._.shift();
         const userInput = [yargs.name, ...yargs._].join(' ');
         if (!userInput) {
@@ -105,13 +121,49 @@ yargs(hideBin(process.argv))
         console.log('Categories:', categories);
       }),
   )
-  .version(false)
-  .options(DailyBreadOptions.Version, {
-    alias: 'v',
-    type: 'string',
-    describe: 'Bible version',
-    default: 'NIV',
-  })
+  .command(
+    'books',
+    'List all books of the Bible.',
+    yargs => {},
+    yargs =>
+      runCommand(async () => {
+        const bible = createDailyBread({
+          version: yargs.version,
+        });
+        const versionData = bible.getVersion();
+
+        console.log('== Old Testament ==');
+        for (const book of CanonicalOrder[Testament.Old]) {
+          const bookData = findBook(book, versionData.language, versionData.deuterocanon);
+          if (!bookData) {
+            throw new Error(`Failed to find book data for ${book}`);
+          }
+          console.log(bookData.name[versionData.language]);
+        }
+        console.log();
+
+        console.log('== New Testament ==');
+        for (const book of CanonicalOrder[Testament.New]) {
+          const bookData = findBook(book, versionData.language, versionData.deuterocanon);
+          if (!bookData) {
+            throw new Error(`Failed to find book data for ${book}`);
+          }
+          console.log(bookData.name[versionData.language]);
+        }
+
+        if (versionData.deuterocanon) {
+          console.log();
+          console.log('== Apocrypha ==');
+          for (const book of DeuterocanonicalOrder) {
+            const bookData = findBook(book, versionData.language, versionData.deuterocanon);
+            if (!bookData) {
+              throw new Error(`Failed to find book data for ${book}`);
+            }
+            console.log(bookData.name[versionData.language]);
+          }
+        }
+      }),
+  )
   .parserConfiguration({
     'populate--': true,
   })

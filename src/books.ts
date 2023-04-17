@@ -864,6 +864,106 @@ export const DeuterocanonBooks: DeuterocanonData = {
 };
 
 /**
+ * Canonical ordering of books of the Bible, according to Christian canon.
+ */
+export const CanonicalOrder: { [testament in Testament]: CanonBook[] } = {
+  [Testament.Old]: [
+    CanonBook.Genesis,
+    CanonBook.Exodus,
+    CanonBook.Leviticus,
+    CanonBook.Numbers,
+    CanonBook.Deuteronomy,
+    CanonBook.Joshua,
+    CanonBook.Judges,
+    CanonBook.Ruth,
+    CanonBook.FirstSamuel,
+    CanonBook.SecondSamuel,
+    CanonBook.FirstKings,
+    CanonBook.SecondKings,
+    CanonBook.FirstChronicles,
+    CanonBook.SecondChronicles,
+    CanonBook.Ezra,
+    CanonBook.Nehemiah,
+    CanonBook.Esther,
+    CanonBook.Job,
+    CanonBook.Psalm,
+    CanonBook.Proverbs,
+    CanonBook.Ecclesiastes,
+    CanonBook.SongOfSongs,
+    CanonBook.Isaiah,
+    CanonBook.Jeremiah,
+    CanonBook.Lamentations,
+    CanonBook.Ezekiel,
+    CanonBook.Daniel,
+    CanonBook.Hosea,
+    CanonBook.Joel,
+    CanonBook.Amos,
+    CanonBook.Obadiah,
+    CanonBook.Jonah,
+    CanonBook.Micah,
+    CanonBook.Nahum,
+    CanonBook.Habakkuk,
+    CanonBook.Zephaniah,
+    CanonBook.Haggai,
+    CanonBook.Zechariah,
+    CanonBook.Malachi,
+  ],
+  [Testament.New]: [
+    CanonBook.Matthew,
+    CanonBook.Mark,
+    CanonBook.Luke,
+    CanonBook.John,
+    CanonBook.Acts,
+    CanonBook.Romans,
+    CanonBook.FirstCorinthians,
+    CanonBook.SecondCorinthians,
+    CanonBook.Galatians,
+    CanonBook.Ephesians,
+    CanonBook.Philippians,
+    CanonBook.Colossians,
+    CanonBook.FirstThessalonians,
+    CanonBook.SecondThessalonians,
+    CanonBook.FirstTimothy,
+    CanonBook.SecondTimothy,
+    CanonBook.Titus,
+    CanonBook.Philemon,
+    CanonBook.Hebrews,
+    CanonBook.James,
+    CanonBook.FirstPeter,
+    CanonBook.SecondPeter,
+    CanonBook.FirstJohn,
+    CanonBook.SecondJohn,
+    CanonBook.ThirdJohn,
+    CanonBook.Jude,
+    CanonBook.Revelation,
+  ],
+};
+
+/**
+ * Canonical ordering of detuerocanon books of the Bible, according to Christian canon.
+ */
+export const DeuterocanonicalOrder: DeuterocanonBook[] = [
+  DeuterocanonBook.Tobit,
+  DeuterocanonBook.Judith,
+  DeuterocanonBook.GreekEsther,
+  DeuterocanonBook.Wisdom,
+  DeuterocanonBook.Sirach,
+  DeuterocanonBook.Baruch,
+  DeuterocanonBook.LetterOfJeremiah,
+  DeuterocanonBook.PrayerOfAzariah,
+  DeuterocanonBook.Susanna,
+  DeuterocanonBook.BelAndTheDragon,
+  DeuterocanonBook.FirstMaccabees,
+  DeuterocanonBook.SecondMaccabees,
+  DeuterocanonBook.FirstEsdras,
+  DeuterocanonBook.PrayerOfManasseh,
+  DeuterocanonBook.PsalmOneFiftyOne,
+  DeuterocanonBook.ThirdMaccabees,
+  DeuterocanonBook.SecondEsdras,
+  DeuterocanonBook.FourthMaccabees,
+];
+
+/**
  * Dictionary used for quick lookup of a book of the canon by name for all languages.
  */
 export type CanonNameLookupMap = { [language in Language]: CaseInsensitiveMap<CanonBook> };
