@@ -3,8 +3,7 @@ import { exit } from 'process';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { Canon, Category, DailyBread, Testament } from '../src';
-import { CanonicalOrder, DeuterocanonicalOrder, findBook } from '../src/books';
+import { Canon, CanonicalOrder, Category, DailyBread, DeuterocanonicalOrder, Testament, findBook } from '../src';
 
 enum DailyBreadOptions {
   Version = 'version',
@@ -37,6 +36,15 @@ function createDailyBread(options: DailyBreadCreationOptions): DailyBread {
   return bible;
 }
 
+function passageCommandOptions<T>(yargs: yargs.Argv<T>) {
+  return yargs.options(DailyBreadOptions.ShowVerseNumbers, {
+    alias: 'n',
+    type: 'boolean',
+    describe: 'Show verse numbers?',
+    default: true,
+  });
+}
+
 yargs(hideBin(process.argv))
   .version(false)
   .options(DailyBreadOptions.Version, {
@@ -48,20 +56,12 @@ yargs(hideBin(process.argv))
   .command(
     ['$0 [passages...]', 'read [passages...]'],
     'Read a passage of the Bible',
-    yargs => {
-      return yargs
-        .positional('passages', {
-          type: 'string',
-          describe: 'One or more passage references (book, chapters, and verses)',
-          default: undefined,
-        })
-        .options(DailyBreadOptions.ShowVerseNumbers, {
-          alias: 'n',
-          type: 'boolean',
-          describe: 'Show verse numbers?',
-          default: true,
-        });
-    },
+    yargs =>
+      passageCommandOptions(yargs).positional('passages', {
+        type: 'string',
+        describe: 'One or more passage references (book, chapters, and verses)',
+        default: undefined,
+      }),
     yargs =>
       runCommand(async () => {
         const bible = createDailyBread({
@@ -82,6 +82,23 @@ yargs(hideBin(process.argv))
           console.log(passage.text);
           console.log();
         }
+      }),
+  )
+  .command(
+    'votd',
+    'Read the verse of the day',
+    yargs => passageCommandOptions(yargs),
+    yargs =>
+      runCommand(async () => {
+        const bible = createDailyBread({
+          version: yargs.version,
+          showVerseNumbers: yargs.verseNumbers,
+        });
+        const votd = await bible.votd();
+        console.log(votd.reference);
+        console.log();
+        console.log(votd.text);
+        console.log();
       }),
   )
   .command(
