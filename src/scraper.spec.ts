@@ -197,4 +197,15 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.equal(passages[0].text, expected);
     });
   });
+
+  describe('votd', () => {
+    it('should return verse of the day', async () => {
+      const scraper = new BibleGatewayWebScraper('NIV');
+      const votd = await scraper.votd();
+      const passages = await scraper.passages(votd.reference);
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, votd.reference);
+      assert.equal(passages[0].text, votd.text);
+    });
+  });
 });

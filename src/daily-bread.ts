@@ -136,6 +136,14 @@ export class DailyBread {
     return await this.getPassages(this.getPassageReferenceFromUserInput(passage), options);
   }
 
+  /**
+   * Returns the verse of the day.
+   * @returns Verse of the day.
+   */
+  public async votd(): Promise<Passage> {
+    return await this.scraper.votd();
+  }
+
   private getPassageReferenceFromUserInput(passage: GetType): PassageReference[] {
     if (typeof passage === 'string') {
       return parsePassageReferences(passage);

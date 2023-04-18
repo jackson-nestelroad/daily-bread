@@ -139,6 +139,16 @@ Output:
 ]
 ```
 
+### Verse of the day
+
+You can read the verse of the day with a single method:
+
+```ts
+const bible = new DailyBread();
+const votd = await bible.votd();
+console.log(votd.text);
+```
+
 ### Setting Bible version
 
 `DailyBread` currently supports several popular English versions of the Bible: CEB, ESV, KJV, LEB, MSG, NIV, NKJV, and NLT.
@@ -219,11 +229,12 @@ npx daily-bread books
 - `DailyBread` class
   - Read one or more passages from the Bible from a supported version with customizable formatting.
   - Get information about a canon or deuterocanon book of the Bible.
+  - Read Verse of the Day.
 - `BibleGatewayWebScraper` class
   - Read passages from Bible Gateway for any version with customizable formatting.
+  - Read Verse of the Day.
 
 ## Planned Features
 
-- Read Verse of the Day.
 - Search for verses by word.
 - Support for more languages.

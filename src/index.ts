@@ -13,7 +13,15 @@ export {
   Language,
   Testament,
 } from './bible';
-export { CanonBooks, CanonNameLookup, DeuterocanonBooks, DeuterocanonNameLookup, findBook } from './books';
+export {
+  CanonBooks,
+  CanonNameLookup,
+  CanonicalOrder,
+  DeuterocanonBooks,
+  DeuterocanonNameLookup,
+  DeuterocanonicalOrder,
+  findBook,
+} from './books';
 export { DailyBread } from './daily-bread';
 export { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
 export { PassageReference, Reference } from './reference';

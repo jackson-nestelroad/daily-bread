@@ -10,6 +10,7 @@ enum UrlConstant {
   Home = 'https://www.biblegateway.com',
   Passage = '/passage',
   Search = '/quicksearch',
+  VerseOfTheDay = '/reading-plans/verse-of-the-day/next',
   PrintInterface = 'print',
 }
 
@@ -23,6 +24,7 @@ enum Markers {
  */
 export interface BibleReader {
   passages(search: string): Promise<Passage[]>;
+  votd(): Promise<Passage>;
   options: PassageFormattingOptions;
 }
 
@@ -53,8 +55,8 @@ export class BibleGatewayWebScraper implements BibleReader {
    * Multiple passages can be searched by separating them with a semicolon (`;`).
    *
    * The format of returned passages is based on the options set in the constructor.
-   * @param search
-   * @returns
+   * @param search String of reference passages.
+   * @returns Array of passages.
    */
   public async passages(search: string): Promise<Passage[]> {
     const response = await this.axios.request({
@@ -77,10 +79,28 @@ export class BibleGatewayWebScraper implements BibleReader {
     return passages;
   }
 
-  private parsePassage($: cheerio.CheerioAPI, el: cheerio.Element): Passage {
+  /**
+   * Returns the verse of the day from Bible Gateway.
+   * @returns Verse of the day.
+   */
+  public async votd(): Promise<Passage> {
+    const response = await this.axios.request({
+      method: 'get',
+      url: UrlConstant.VerseOfTheDay,
+      params: {
+        version: this.version,
+        interface: UrlConstant.PrintInterface,
+      },
+    });
+
+    const $ = cheerio.load(response.data);
+    return this.parsePassage($, $('.rp-passage').get(0), true);
+  }
+
+  private parsePassage($: cheerio.CheerioAPI, el: cheerio.Element, readingPlan: boolean = false): Passage {
     const passage = $(el);
 
-    const reference = passage.find('div.bcv').text();
+    const reference = passage.find(readingPlan ? 'div.rp-passage-display' : 'div.bcv').text();
 
     // Remove headers, links, cross references, footnotes, various dropdowns, and translation notes.
     passage.find('h1, h2, h3, h4').remove();
@@ -89,6 +109,10 @@ export class BibleGatewayWebScraper implements BibleReader {
     passage.find('div.footnotes, div.dropdowns, div.crossrefs, div.passage-other-trans, div.il-text').remove();
     passage.find('p.translation-note').remove();
     passage.find('crossref').remove();
+
+    if (readingPlan) {
+      passage.find('div.rp-passage-display-wrapper').remove();
+    }
 
     if (this.options.showVerseNumberForVerseOne) {
       passage.find('span.chapternum').replaceWith('<sup class="versenum">1 </sup>');
