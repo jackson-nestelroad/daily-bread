@@ -4,6 +4,7 @@
   "description": "TypeScript library for reading the Bible.",
   "author": "jackson-nestelroad",
   "license": "ISC",
+  "repository": "github:jackson-nestelroad/daily-bread",
   "keywords": [
     "bible",
     "scripture",
