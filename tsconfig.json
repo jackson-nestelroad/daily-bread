@@ -10,7 +10,7 @@
     "removeComments": false,
     "noLib": false,
     "preserveConstEnums": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./build",
     "skipLibCheck": true
   },
