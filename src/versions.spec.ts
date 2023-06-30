@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { Language } from './bible';
-import { findVersion } from './versions';
+import { Language } from './bible.js';
+import { findVersion } from './versions.js';
 
 describe('findVersion', () => {
   it('should return version data for supported version', () => {

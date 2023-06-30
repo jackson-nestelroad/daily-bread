@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 import { exit } from 'process';
-import yargs from 'yargs';
+import yargs, { Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { Canon, CanonicalOrder, Category, DailyBread, DeuterocanonicalOrder, Testament, findBook } from '../src';
+import {
+  Canon,
+  CanonicalOrder,
+  Category,
+  DailyBread,
+  DeuterocanonicalOrder,
+  Testament,
+  findBook,
+} from '../src/index.js';
 
 enum DailyBreadOptions {
   Version = 'version',
@@ -36,7 +44,7 @@ function createDailyBread(options: DailyBreadCreationOptions): DailyBread {
   return bible;
 }
 
-function passageCommandOptions<T>(yargs: yargs.Argv<T>) {
+function passageCommandOptions<T>(yargs: Argv<T>) {
   return yargs.options(DailyBreadOptions.ShowVerseNumbers, {
     alias: 'n',
     type: 'boolean',

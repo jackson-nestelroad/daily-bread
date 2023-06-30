@@ -8,8 +8,8 @@ import {
   DeuterocanonData,
   Language,
   Testament,
-} from './bible';
-import { CaseInsensitiveMap } from './util/case-insensitive-map';
+} from './bible.js';
+import { CaseInsensitiveMap } from './util/case-insensitive-map.js';
 
 /**
  * Data for all books of the canon.

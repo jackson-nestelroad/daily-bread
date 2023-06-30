@@ -1,8 +1,13 @@
 import { assert } from 'chai';
 
-import { CanonBook, Language } from './bible';
-import { CanonBooks } from './books';
-import { PassageReference, cleanPassageReference, formatPassageReference, parsePassageReferences } from './reference';
+import { CanonBook, Language } from './bible.js';
+import { CanonBooks } from './books.js';
+import {
+  PassageReference,
+  cleanPassageReference,
+  formatPassageReference,
+  parsePassageReferences,
+} from './reference.js';
 
 describe('parsePassageReferences', () => {
   it('should parse book alone', () => {

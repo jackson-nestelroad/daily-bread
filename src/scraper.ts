@@ -1,10 +1,10 @@
 import { Axios } from 'axios';
 import * as cheerio from 'cheerio';
 
-import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
-import { removeSuperscriptNumbers, replaceNumbersWithSuperscript, replaceSuperscriptNumber } from './util/numbers';
-import { applyDefaults } from './util/options';
-import { addPoetryPaddingToLine, convertUnicodePunctuationToAscii, trimWhitespace } from './util/strings';
+import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage.js';
+import { removeSuperscriptNumbers, replaceNumbersWithSuperscript, replaceSuperscriptNumber } from './util/numbers.js';
+import { applyDefaults } from './util/options.js';
+import { addPoetryPaddingToLine, convertUnicodePunctuationToAscii, trimWhitespace } from './util/strings.js';
 
 enum UrlConstant {
   Home = 'https://www.biblegateway.com',
@@ -181,5 +181,5 @@ export class BibleGatewayWebScraper implements BibleReader {
     return { reference, text };
   }
 
-  private axios: Axios;
+  private axios: InstanceType<typeof Axios>;
 }

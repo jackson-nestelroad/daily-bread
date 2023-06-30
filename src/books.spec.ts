@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { CanonBook, DeuterocanonBook, Language } from './bible';
-import { CanonBooks, DeuterocanonBooks, findBook } from './books';
+import { CanonBook, DeuterocanonBook, Language } from './bible.js';
+import { CanonBooks, DeuterocanonBooks, findBook } from './books.js';
 
 describe('findBook', () => {
   it('should find book from abbreviation', () => {

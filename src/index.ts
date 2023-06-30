@@ -12,7 +12,7 @@ export {
   DeuterocanonData,
   Language,
   Testament,
-} from './bible';
+} from './bible.js';
 export {
   CanonBooks,
   CanonNameLookup,
@@ -21,9 +21,9 @@ export {
   DeuterocanonNameLookup,
   DeuterocanonicalOrder,
   findBook,
-} from './books';
-export { DailyBread } from './daily-bread';
-export { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
-export { PassageReference, Reference } from './reference';
-export { BibleGatewayWebScraper, BibleReader } from './scraper';
-export { VersionData, Versions, findVersion } from './versions';
+} from './books.js';
+export { DailyBread } from './daily-bread.js';
+export { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage.js';
+export { PassageReference, Reference } from './reference.js';
+export { BibleGatewayWebScraper, BibleReader } from './scraper.js';
+export { VersionData, Versions, findVersion } from './versions.js';

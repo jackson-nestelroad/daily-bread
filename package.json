@@ -1,5 +1,6 @@
 {
   "name": "daily-bread",
+  "type": "module",
   "version": "1.1.0",
   "description": "TypeScript library for reading the Bible.",
   "author": "jackson-nestelroad",

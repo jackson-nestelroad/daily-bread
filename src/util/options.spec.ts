@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { applyDefaults } from './options';
+import { applyDefaults } from './options.js';
 
 describe('applyDefaults', () => {
   interface Options {

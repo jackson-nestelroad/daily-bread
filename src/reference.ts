@@ -1,4 +1,4 @@
-import { BookData, Language } from './bible';
+import { BookData, Language } from './bible.js';
 
 /**
  * A reference to a section of a chapter of the Bible.

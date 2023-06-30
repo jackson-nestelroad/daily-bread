@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { bindNumberToRange, removeSuperscriptNumbers, replaceNumbersWithSuperscript, splitRange } from './numbers';
+import { bindNumberToRange, removeSuperscriptNumbers, replaceNumbersWithSuperscript, splitRange } from './numbers.js';
 
 describe('bindNumberToRange', () => {
   it('should return low when n < low', () => {

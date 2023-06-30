@@ -1,9 +1,9 @@
 import { assert } from 'chai';
 import { SinonMock, mock } from 'sinon';
 
-import { CanonBook } from './bible';
-import { DailyBread } from './daily-bread';
-import { Passage } from './passage';
+import { CanonBook } from './bible.js';
+import { DailyBread } from './daily-bread.js';
+import { Passage } from './passage.js';
 
 function expectPassageRead(scraper: SinonMock, passage: Passage) {
   scraper

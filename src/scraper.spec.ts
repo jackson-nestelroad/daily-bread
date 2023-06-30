@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { Suite } from 'mocha';
 
-import { BibleGatewayWebScraper } from './scraper';
+import { BibleGatewayWebScraper } from './scraper.js';
 
 describe('BibleGatewayWebScraper', function (this: Suite) {
   this.slow(1000);

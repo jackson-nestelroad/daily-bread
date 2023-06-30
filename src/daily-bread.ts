@@ -1,11 +1,16 @@
-import { BookData } from './bible';
-import { findBook } from './books';
-import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage';
-import { PassageReference, cleanPassageReference, formatPassageReference, parsePassageReferences } from './reference';
-import { BibleGatewayWebScraper, BibleReader } from './scraper';
-import { splitRange } from './util/numbers';
-import { applyDefaults } from './util/options';
-import { DefaultVersion, VersionData, findVersion } from './versions';
+import { BookData } from './bible.js';
+import { findBook } from './books.js';
+import { DefaultPassageFormattingOptions, Passage, PassageFormattingOptions } from './passage.js';
+import {
+  PassageReference,
+  cleanPassageReference,
+  formatPassageReference,
+  parsePassageReferences,
+} from './reference.js';
+import { BibleGatewayWebScraper, BibleReader } from './scraper.js';
+import { splitRange } from './util/numbers.js';
+import { applyDefaults } from './util/options.js';
+import { DefaultVersion, VersionData, findVersion } from './versions.js';
 
 /**
  * The type for getting a single passage of the Bible.

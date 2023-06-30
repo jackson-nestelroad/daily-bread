@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { addPoetryPaddingToLine, convertUnicodePunctuationToAscii, trimWhitespace } from './strings';
+import { addPoetryPaddingToLine, convertUnicodePunctuationToAscii, trimWhitespace } from './strings.js';
 
 describe('trimWhitespace', () => {
   it('should trim regular whitespace', () => {

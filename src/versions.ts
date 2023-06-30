@@ -1,5 +1,5 @@
-import { Language } from './bible';
-import { CaseInsensitiveMap } from './util/case-insensitive-map';
+import { Language } from './bible.js';
+import { CaseInsensitiveMap } from './util/case-insensitive-map.js';
 
 // The starting point for the versions we support is https://www.biblegateway.com/versions/?interface=print.
 

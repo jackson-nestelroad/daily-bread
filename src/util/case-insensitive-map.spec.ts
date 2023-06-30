@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { CaseInsensitiveMap } from './case-insensitive-map';
+import { CaseInsensitiveMap } from './case-insensitive-map.js';
 
 describe('CaseInsensitiveMap', () => {
   it('should construct map from iterable', () => {

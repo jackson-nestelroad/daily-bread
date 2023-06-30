@@ -1,4 +1,4 @@
-import { SuperscriptNumbers } from './numbers';
+import { SuperscriptNumbers } from './numbers.js';
 
 const WhitespaceRegex = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
