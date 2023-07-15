@@ -18,6 +18,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Genesis]: {
     name: {
       [Language.English]: 'Genesis',
+      [Language.Spanish]: 'Génesis',
+      [Language.Chinese]: '創 世 記',
+      [Language.Korean]: '창세기',
+      [Language.Japanese]: '創世記',
+      [Language.Portuguese]: 'Gênesis',
+      [Language.French]: 'Genèse',
+      [Language.German]: '1 Mose',
+      [Language.Italian]: 'Genesi',
+      [Language.Hindi]: 'उत्पत्ति',
     },
     abbreviation: CanonBook.Genesis,
     testament: Testament.Old,
@@ -28,6 +37,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Exodus]: {
     name: {
       [Language.English]: 'Exodus',
+      [Language.Spanish]: 'Éxodo',
+      [Language.Chinese]: '出 埃 及 記',
+      [Language.Korean]: '출애굽기',
+      [Language.Japanese]: '出エジプト記',
+      [Language.Portuguese]: 'Êxodo',
+      [Language.French]: 'Exode',
+      [Language.German]: '2 Mose',
+      [Language.Italian]: 'Esodo',
+      [Language.Hindi]: 'निर्गमन',
     },
     abbreviation: CanonBook.Exodus,
     testament: Testament.Old,
@@ -38,6 +56,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Leviticus]: {
     name: {
       [Language.English]: 'Leviticus',
+      [Language.Spanish]: 'Levítico',
+      [Language.Chinese]: '利 未 記',
+      [Language.Korean]: '레위기',
+      [Language.Japanese]: 'レビ記',
+      [Language.Portuguese]: 'Levítico',
+      [Language.French]: 'Lévitique',
+      [Language.German]: '3 Mose',
+      [Language.Italian]: 'Levitico',
+      [Language.Hindi]: 'लैव्यव्यवस्था',
     },
     abbreviation: CanonBook.Leviticus,
     testament: Testament.Old,
@@ -48,6 +75,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Numbers]: {
     name: {
       [Language.English]: 'Numbers',
+      [Language.Spanish]: 'Números',
+      [Language.Chinese]: '民 數 記',
+      [Language.Korean]: '민수기',
+      [Language.Japanese]: '民数記',
+      [Language.Portuguese]: 'Números',
+      [Language.French]: 'Nombres',
+      [Language.German]: '4 Mose',
+      [Language.Italian]: 'Numeri',
+      [Language.Hindi]: 'गिनती',
     },
     abbreviation: CanonBook.Numbers,
     testament: Testament.Old,
@@ -58,6 +94,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Deuteronomy]: {
     name: {
       [Language.English]: 'Deuteronomy',
+      [Language.Spanish]: 'Deuteronomio',
+      [Language.Chinese]: '申 命 記',
+      [Language.Korean]: '신명기',
+      [Language.Japanese]: '申命記',
+      [Language.Portuguese]: 'Deuteronômio',
+      [Language.French]: 'Deutéronome',
+      [Language.German]: '5 Mose',
+      [Language.Italian]: 'Deuteronomio',
+      [Language.Hindi]: 'व्यवस्था विवरण',
     },
     abbreviation: CanonBook.Deuteronomy,
     testament: Testament.Old,
@@ -68,6 +113,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Joshua]: {
     name: {
       [Language.English]: 'Joshua',
+      [Language.Spanish]: 'Josué',
+      [Language.Chinese]: '約 書 亞 記',
+      [Language.Korean]: '여호수아',
+      [Language.Japanese]: 'ヨシュア記',
+      [Language.Portuguese]: 'Josué',
+      [Language.French]: 'Josué',
+      [Language.German]: 'Josua',
+      [Language.Italian]: 'Giosué',
+      [Language.Hindi]: 'यहोशू',
     },
     abbreviation: CanonBook.Joshua,
     testament: Testament.Old,
@@ -78,6 +132,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Judges]: {
     name: {
       [Language.English]: 'Judges',
+      [Language.Spanish]: 'Jueces',
+      [Language.Chinese]: '士 師 記',
+      [Language.Korean]: '사사기',
+      [Language.Japanese]: '士師記',
+      [Language.Portuguese]: 'Juízes',
+      [Language.French]: 'Juges',
+      [Language.German]: 'Richter',
+      [Language.Italian]: 'Giudici',
+      [Language.Hindi]: 'न्यायियों',
     },
     abbreviation: CanonBook.Judges,
     testament: Testament.Old,
@@ -88,6 +151,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Ruth]: {
     name: {
       [Language.English]: 'Ruth',
+      [Language.Spanish]: 'Rut',
+      [Language.Chinese]: '路 得 記',
+      [Language.Korean]: '룻기',
+      [Language.Japanese]: 'ルツ記',
+      [Language.Portuguese]: 'Rute',
+      [Language.French]: 'Ruth',
+      [Language.German]: 'Rut',
+      [Language.Italian]: 'Rut',
+      [Language.Hindi]: 'रूत',
     },
     abbreviation: CanonBook.Ruth,
     testament: Testament.Old,
@@ -98,6 +170,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstSamuel]: {
     name: {
       [Language.English]: '1 Samuel',
+      [Language.Spanish]: '1 Samuel',
+      [Language.Chinese]: '撒 母 耳 記 上',
+      [Language.Korean]: '사무엘상',
+      [Language.Japanese]: 'サムエル記Ⅰ',
+      [Language.Portuguese]: '1 Samuel',
+      [Language.French]: '1 Samuel',
+      [Language.German]: '1 Samuel',
+      [Language.Italian]: '1 Samuele',
+      [Language.Hindi]: '1 शमूएल',
     },
     abbreviation: CanonBook.FirstSamuel,
     testament: Testament.Old,
@@ -108,6 +189,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondSamuel]: {
     name: {
       [Language.English]: '2 Samuel',
+      [Language.Spanish]: '2 Samuel',
+      [Language.Chinese]: '撒 母 耳 記 下',
+      [Language.Korean]: '사무엘하',
+      [Language.Japanese]: 'サムエル記Ⅱ',
+      [Language.Portuguese]: '2 Samuel',
+      [Language.French]: '2 Samuel',
+      [Language.German]: '2 Samuel',
+      [Language.Italian]: '2 Samuele',
+      [Language.Hindi]: '2 शमूएल',
     },
     abbreviation: CanonBook.SecondSamuel,
     testament: Testament.Old,
@@ -118,6 +208,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstKings]: {
     name: {
       [Language.English]: '1 Kings',
+      [Language.Spanish]: '1 Reyes',
+      [Language.Chinese]: '列 王 紀 上',
+      [Language.Korean]: '열왕기상',
+      [Language.Japanese]: '列王記Ⅰ',
+      [Language.Portuguese]: '1 Reis',
+      [Language.French]: '1 Rois',
+      [Language.German]: '1 Koenige',
+      [Language.Italian]: '1 Re',
+      [Language.Hindi]: '1 राजा',
     },
     abbreviation: CanonBook.FirstKings,
     testament: Testament.Old,
@@ -128,6 +227,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondKings]: {
     name: {
       [Language.English]: '2 Kings',
+      [Language.Spanish]: '2 Reyes',
+      [Language.Chinese]: '列 王 紀 下',
+      [Language.Korean]: '열왕기하',
+      [Language.Japanese]: '列王記Ⅱ',
+      [Language.Portuguese]: '2 Reis',
+      [Language.French]: '2 Rois',
+      [Language.German]: '2 Koenige',
+      [Language.Italian]: '2 Re',
+      [Language.Hindi]: '2 राजा',
     },
     abbreviation: CanonBook.SecondKings,
     testament: Testament.Old,
@@ -138,6 +246,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstChronicles]: {
     name: {
       [Language.English]: '1 Chronicles',
+      [Language.Spanish]: '1 Crónicas',
+      [Language.Chinese]: '歷 代 志 上',
+      [Language.Korean]: '역대상',
+      [Language.Japanese]: '歴代誌Ⅰ',
+      [Language.Portuguese]: '1 Crônicas',
+      [Language.French]: '1 Chroniques',
+      [Language.German]: '1 Chronik',
+      [Language.Italian]: '1 Cronache',
+      [Language.Hindi]: '1 इतिहास',
     },
     abbreviation: CanonBook.FirstChronicles,
     testament: Testament.Old,
@@ -148,6 +265,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondChronicles]: {
     name: {
       [Language.English]: '2 Chronicles',
+      [Language.Spanish]: '2 Crónicas',
+      [Language.Chinese]: '歷 代 志 下',
+      [Language.Korean]: '역대하',
+      [Language.Japanese]: '歴代誌Ⅱ',
+      [Language.Portuguese]: '2 Crônicas',
+      [Language.French]: '2 Chroniques',
+      [Language.German]: '2 Chronik',
+      [Language.Italian]: '2 Cronache',
+      [Language.Hindi]: '2 इतिहास',
     },
     abbreviation: CanonBook.SecondChronicles,
     testament: Testament.Old,
@@ -158,6 +284,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Ezra]: {
     name: {
       [Language.English]: 'Ezra',
+      [Language.Spanish]: 'Esdras',
+      [Language.Chinese]: '以 斯 拉 記',
+      [Language.Korean]: '에스라',
+      [Language.Japanese]: 'エズラ記',
+      [Language.Portuguese]: 'Esdras',
+      [Language.French]: 'Esdras',
+      [Language.German]: 'Esra',
+      [Language.Italian]: 'Esdra',
+      [Language.Hindi]: 'एज्रा',
     },
     abbreviation: CanonBook.Ezra,
     testament: Testament.Old,
@@ -168,6 +303,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Nehemiah]: {
     name: {
       [Language.English]: 'Nehemiah',
+      [Language.Spanish]: 'Nehemías',
+      [Language.Chinese]: '尼 希 米 記',
+      [Language.Korean]: '느헤미야',
+      [Language.Japanese]: 'ネヘミヤ 記',
+      [Language.Portuguese]: 'Neemias',
+      [Language.French]: 'Néhémie',
+      [Language.German]: 'Nehemia',
+      [Language.Italian]: 'Neemia',
+      [Language.Hindi]: 'नहेमायाह',
     },
     abbreviation: CanonBook.Nehemiah,
     testament: Testament.Old,
@@ -178,6 +322,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Esther]: {
     name: {
       [Language.English]: 'Esther',
+      [Language.Spanish]: 'Ester',
+      [Language.Chinese]: '以 斯 帖 記',
+      [Language.Korean]: '에스더',
+      [Language.Japanese]: 'エステル 記',
+      [Language.Portuguese]: 'Ester',
+      [Language.French]: 'Esther',
+      [Language.German]: 'Ester',
+      [Language.Italian]: 'Ester',
+      [Language.Hindi]: 'एस्तेर',
     },
     abbreviation: CanonBook.Esther,
     testament: Testament.Old,
@@ -188,6 +341,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Job]: {
     name: {
       [Language.English]: 'Job',
+      [Language.Spanish]: 'Job',
+      [Language.Chinese]: '約 伯 記',
+      [Language.Korean]: '욥기',
+      [Language.Japanese]: 'ヨブ 記',
+      [Language.Portuguese]: 'Jó',
+      [Language.French]: 'Job',
+      [Language.German]: 'Hiob',
+      [Language.Italian]: 'Giobbe',
+      [Language.Hindi]: 'अय्यूब',
     },
     abbreviation: CanonBook.Job,
     testament: Testament.Old,
@@ -198,6 +360,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Psalm]: {
     name: {
       [Language.English]: 'Psalm',
+      [Language.Spanish]: 'Salmos',
+      [Language.Chinese]: '詩 篇',
+      [Language.Korean]: '시편',
+      [Language.Japanese]: '詩篇',
+      [Language.Portuguese]: 'Salmos',
+      [Language.French]: 'Psaumes',
+      [Language.German]: 'Psalm',
+      [Language.Italian]: 'Salmi',
+      [Language.Hindi]: 'भजन संहिता',
     },
     abbreviation: CanonBook.Psalm,
     testament: Testament.Old,
@@ -208,6 +379,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Proverbs]: {
     name: {
       [Language.English]: 'Proverbs',
+      [Language.Spanish]: 'Proverbios',
+      [Language.Chinese]: '箴 言',
+      [Language.Korean]: '잠언',
+      [Language.Japanese]: '箴言 知恵の泉',
+      [Language.Portuguese]: 'Provérbios',
+      [Language.French]: 'Proverbes',
+      [Language.German]: 'Sprueche',
+      [Language.Italian]: 'Proverbi',
+      [Language.Hindi]: 'नीतिवचन',
     },
     abbreviation: CanonBook.Proverbs,
     testament: Testament.Old,
@@ -218,6 +398,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Ecclesiastes]: {
     name: {
       [Language.English]: 'Ecclesiastes',
+      [Language.Spanish]: 'Eclesiastés',
+      [Language.Chinese]: '傳 道 書',
+      [Language.Korean]: '전도서',
+      [Language.Japanese]: '伝道者の書',
+      [Language.Portuguese]: 'Eclesiastes',
+      [Language.French]: 'Ecclésiaste',
+      [Language.German]: 'Prediger',
+      [Language.Italian]: 'Ecclesiaste',
+      [Language.Hindi]: 'सभोपदेशक',
     },
     abbreviation: CanonBook.Ecclesiastes,
     testament: Testament.Old,
@@ -228,6 +417,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SongOfSongs]: {
     name: {
       [Language.English]: 'Song of Songs',
+      [Language.Spanish]: 'Cantares',
+      [Language.Chinese]: '雅 歌',
+      [Language.Korean]: '아가',
+      [Language.Japanese]: '雅歌',
+      [Language.Portuguese]: 'Cantares',
+      [Language.French]: 'Cantique des Cantiques',
+      [Language.German]: 'Hohelied',
+      [Language.Italian]: 'Cantico dei Cantici',
+      [Language.Hindi]: 'श्रेष्ठगीत',
     },
     abbreviation: CanonBook.SongOfSongs,
     testament: Testament.Old,
@@ -238,6 +436,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Isaiah]: {
     name: {
       [Language.English]: 'Isaiah',
+      [Language.Spanish]: 'Isaías',
+      [Language.Chinese]: '以 賽 亞 書',
+      [Language.Korean]: '이사야',
+      [Language.Japanese]: 'イザヤ書',
+      [Language.Portuguese]: 'Isaías',
+      [Language.French]: 'Ésaïe',
+      [Language.German]: 'Jesaja',
+      [Language.Italian]: 'Isaia',
+      [Language.Hindi]: 'यशायाह',
     },
     abbreviation: CanonBook.Isaiah,
     testament: Testament.Old,
@@ -248,6 +455,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Jeremiah]: {
     name: {
       [Language.English]: 'Jeremiah',
+      [Language.Spanish]: 'Jeremías',
+      [Language.Chinese]: '耶 利 米 書',
+      [Language.Korean]: '예레미야',
+      [Language.Japanese]: 'エレミヤ書',
+      [Language.Portuguese]: 'Jeremias',
+      [Language.French]: 'Jérémie',
+      [Language.German]: 'Jeremia',
+      [Language.Italian]: 'Geremia',
+      [Language.Hindi]: 'यिर्मयाह',
     },
     abbreviation: CanonBook.Jeremiah,
     testament: Testament.Old,
@@ -258,6 +474,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Lamentations]: {
     name: {
       [Language.English]: 'Lamentations',
+      [Language.Spanish]: 'Lamentaciones',
+      [Language.Chinese]: '耶 利 米 哀 歌',
+      [Language.Korean]: '예레미야애가',
+      [Language.Japanese]: '哀歌',
+      [Language.Portuguese]: 'Lamentações',
+      [Language.French]: 'Lamentations',
+      [Language.German]: 'Klagelieder',
+      [Language.Italian]: 'Lamentazioni',
+      [Language.Hindi]: 'विलापगीत',
     },
     abbreviation: CanonBook.Lamentations,
     testament: Testament.Old,
@@ -268,6 +493,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Ezekiel]: {
     name: {
       [Language.English]: 'Ezekiel',
+      [Language.Spanish]: 'Ezequiel',
+      [Language.Chinese]: '以 西 結 書',
+      [Language.Korean]: '에스겔',
+      [Language.Japanese]: 'エゼキエル書',
+      [Language.Portuguese]: 'Ezequiel',
+      [Language.French]: 'Ézéchiel',
+      [Language.German]: 'Hesekiel',
+      [Language.Italian]: 'Ezechiele',
+      [Language.Hindi]: 'यहेजकेल',
     },
     abbreviation: CanonBook.Ezekiel,
     testament: Testament.Old,
@@ -278,6 +512,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Daniel]: {
     name: {
       [Language.English]: 'Daniel',
+      [Language.Spanish]: 'Daniel',
+      [Language.Chinese]: '但 以 理 書',
+      [Language.Korean]: '다니엘',
+      [Language.Japanese]: 'ダニエル書',
+      [Language.Portuguese]: 'Daniel',
+      [Language.French]: 'Daniel',
+      [Language.German]: 'Daniel',
+      [Language.Italian]: 'Daniele',
+      [Language.Hindi]: 'दानिय्येल',
     },
     abbreviation: CanonBook.Daniel,
     testament: Testament.Old,
@@ -288,6 +531,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Hosea]: {
     name: {
       [Language.English]: 'Hosea',
+      [Language.Spanish]: 'Oseas',
+      [Language.Chinese]: '何 西 阿 書',
+      [Language.Korean]: '호세아',
+      [Language.Japanese]: 'ホセア書',
+      [Language.Portuguese]: 'Oseias',
+      [Language.French]: 'Osée',
+      [Language.German]: 'Hosea',
+      [Language.Italian]: 'Osea',
+      [Language.Hindi]: 'होशे',
     },
     abbreviation: CanonBook.Hosea,
     testament: Testament.Old,
@@ -298,6 +550,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Joel]: {
     name: {
       [Language.English]: 'Joel',
+      [Language.Spanish]: 'Joel',
+      [Language.Chinese]: '約 珥 書',
+      [Language.Korean]: '요엘',
+      [Language.Japanese]: 'ヨエル書',
+      [Language.Portuguese]: 'Joel',
+      [Language.French]: 'Joël',
+      [Language.German]: 'Joel',
+      [Language.Italian]: 'Gioele',
+      [Language.Hindi]: 'योएल',
     },
     abbreviation: CanonBook.Joel,
     testament: Testament.Old,
@@ -308,6 +569,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Amos]: {
     name: {
       [Language.English]: 'Amos',
+      [Language.Spanish]: 'Amós',
+      [Language.Chinese]: '阿 摩 司 書',
+      [Language.Korean]: '아모스',
+      [Language.Japanese]: 'アモス書',
+      [Language.Portuguese]: 'Amós',
+      [Language.French]: 'Amos',
+      [Language.German]: 'Amos',
+      [Language.Italian]: 'Amos',
+      [Language.Hindi]: 'आमोस',
     },
     abbreviation: CanonBook.Amos,
     testament: Testament.Old,
@@ -318,6 +588,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Obadiah]: {
     name: {
       [Language.English]: 'Obadiah',
+      [Language.Spanish]: 'Abdías',
+      [Language.Chinese]: '俄 巴 底 亞 書',
+      [Language.Korean]: '오바댜',
+      [Language.Japanese]: 'オバデヤ書',
+      [Language.Portuguese]: 'Obadias',
+      [Language.French]: 'Abdias',
+      [Language.German]: 'Obadja',
+      [Language.Italian]: 'Abdia',
+      [Language.Hindi]: 'ओबद्याह',
     },
     abbreviation: CanonBook.Obadiah,
     testament: Testament.Old,
@@ -328,6 +607,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Jonah]: {
     name: {
       [Language.English]: 'Jonah',
+      [Language.Spanish]: 'Jonás',
+      [Language.Chinese]: '約 拿 書',
+      [Language.Korean]: '요나',
+      [Language.Japanese]: 'ヨナ書',
+      [Language.Portuguese]: 'Jonas',
+      [Language.French]: 'Jonas',
+      [Language.German]: 'Jona',
+      [Language.Italian]: 'Giona',
+      [Language.Hindi]: 'योना',
     },
     abbreviation: CanonBook.Jonah,
     testament: Testament.Old,
@@ -338,6 +626,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Micah]: {
     name: {
       [Language.English]: 'Micah',
+      [Language.Spanish]: 'Miqueas',
+      [Language.Chinese]: '彌 迦 書',
+      [Language.Korean]: '미가',
+      [Language.Japanese]: 'ミカ書',
+      [Language.Portuguese]: 'Miqueias',
+      [Language.French]: 'Michée',
+      [Language.German]: 'Mica',
+      [Language.Italian]: 'Michea',
+      [Language.Hindi]: 'मीका',
     },
     abbreviation: CanonBook.Micah,
     testament: Testament.Old,
@@ -348,6 +645,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Nahum]: {
     name: {
       [Language.English]: 'Nahum',
+      [Language.Spanish]: 'Nahúm',
+      [Language.Chinese]: '那 鴻 書',
+      [Language.Korean]: '나훔',
+      [Language.Japanese]: 'ナホム書',
+      [Language.Portuguese]: 'Naum',
+      [Language.French]: 'Nahum',
+      [Language.German]: 'Nahum',
+      [Language.Italian]: 'Nahum',
+      [Language.Hindi]: 'नहूम',
     },
     abbreviation: CanonBook.Nahum,
     testament: Testament.Old,
@@ -358,6 +664,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Habakkuk]: {
     name: {
       [Language.English]: 'Habakkuk',
+      [Language.Spanish]: 'Habacuc',
+      [Language.Chinese]: '哈 巴 谷 書',
+      [Language.Korean]: '하박국',
+      [Language.Japanese]: 'ハバクク書',
+      [Language.Portuguese]: 'Habacuque',
+      [Language.French]: 'Habacuc',
+      [Language.German]: 'Habakuk',
+      [Language.Italian]: 'Abacuc',
+      [Language.Hindi]: 'हबक्कूक',
     },
     abbreviation: CanonBook.Habakkuk,
     testament: Testament.Old,
@@ -368,6 +683,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Zephaniah]: {
     name: {
       [Language.English]: 'Zephaniah',
+      [Language.Spanish]: 'Sofonías',
+      [Language.Chinese]: '西 番 雅 書',
+      [Language.Korean]: '스바냐',
+      [Language.Japanese]: 'ゼパニヤ書',
+      [Language.Portuguese]: 'Sofonias',
+      [Language.French]: 'Sophonie',
+      [Language.German]: 'Zephanja',
+      [Language.Italian]: 'Sofonia',
+      [Language.Hindi]: 'सपन्याह',
     },
     abbreviation: CanonBook.Zephaniah,
     testament: Testament.Old,
@@ -378,6 +702,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Haggai]: {
     name: {
       [Language.English]: 'Haggai',
+      [Language.Spanish]: 'Hageo',
+      [Language.Chinese]: '哈 該 書',
+      [Language.Korean]: '학개',
+      [Language.Japanese]: 'ハガイ書',
+      [Language.Portuguese]: 'Ageu',
+      [Language.French]: 'Aggée',
+      [Language.German]: 'Haggai',
+      [Language.Italian]: 'Aggeo',
+      [Language.Hindi]: 'हाग्गै',
     },
     abbreviation: CanonBook.Haggai,
     testament: Testament.Old,
@@ -388,6 +721,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Zechariah]: {
     name: {
       [Language.English]: 'Zechariah',
+      [Language.Spanish]: 'Zacarías',
+      [Language.Chinese]: '撒 迦 利 亞',
+      [Language.Korean]: '스가랴',
+      [Language.Japanese]: 'ゼカリヤ書',
+      [Language.Portuguese]: 'Zacarias',
+      [Language.French]: 'Zacharie',
+      [Language.German]: 'Sacharja',
+      [Language.Italian]: 'Zaccaria',
+      [Language.Hindi]: 'जकर्याह',
     },
     abbreviation: CanonBook.Zechariah,
     testament: Testament.Old,
@@ -398,6 +740,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Malachi]: {
     name: {
       [Language.English]: 'Malachi',
+      [Language.Spanish]: 'Malaquías',
+      [Language.Chinese]: '瑪 拉 基 書',
+      [Language.Korean]: '말라기',
+      [Language.Japanese]: 'マラキ書',
+      [Language.Portuguese]: 'Malaquias',
+      [Language.French]: 'Malachie',
+      [Language.German]: 'Maleachi',
+      [Language.Italian]: 'Malachia',
+      [Language.Hindi]: 'मलाकी',
     },
     abbreviation: CanonBook.Malachi,
     testament: Testament.Old,
@@ -408,6 +759,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Matthew]: {
     name: {
       [Language.English]: 'Matthew',
+      [Language.Spanish]: 'Mateo',
+      [Language.Chinese]: '馬 太 福 音',
+      [Language.Korean]: '마태복음',
+      [Language.Japanese]: 'マタイの福音書',
+      [Language.Portuguese]: 'Mateus',
+      [Language.French]: 'Matthieu',
+      [Language.German]: 'Matthaeus',
+      [Language.Italian]: 'Matteo',
+      [Language.Hindi]: 'मत्ती',
     },
     abbreviation: CanonBook.Matthew,
     testament: Testament.New,
@@ -418,6 +778,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Mark]: {
     name: {
       [Language.English]: 'Mark',
+      [Language.Spanish]: 'Marcos',
+      [Language.Chinese]: '馬 可 福 音',
+      [Language.Korean]: '마가복음',
+      [Language.Japanese]: 'マルコの福音書',
+      [Language.Portuguese]: 'Marcos',
+      [Language.French]: 'Marc',
+      [Language.German]: 'Markus',
+      [Language.Italian]: 'Marco',
+      [Language.Hindi]: 'मरकुस',
     },
     abbreviation: CanonBook.Mark,
     testament: Testament.New,
@@ -428,6 +797,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Luke]: {
     name: {
       [Language.English]: 'Luke',
+      [Language.Spanish]: 'Lucas',
+      [Language.Chinese]: '路 加 福 音',
+      [Language.Korean]: '누가복음',
+      [Language.Japanese]: 'ルカの福音書',
+      [Language.Portuguese]: 'Lucas',
+      [Language.French]: 'Luc',
+      [Language.German]: 'Lukas',
+      [Language.Italian]: 'Luca',
+      [Language.Hindi]: 'लूका',
     },
     abbreviation: CanonBook.Luke,
     testament: Testament.New,
@@ -438,6 +816,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.John]: {
     name: {
       [Language.English]: 'John',
+      [Language.Spanish]: 'Juan',
+      [Language.Chinese]: '約 翰 福 音',
+      [Language.Korean]: '요한복음',
+      [Language.Japanese]: 'ヨハネの福音書',
+      [Language.Portuguese]: 'João',
+      [Language.French]: 'Jean',
+      [Language.German]: 'Johannes',
+      [Language.Italian]: 'Giovanni',
+      [Language.Hindi]: 'यूहन्ना',
     },
     abbreviation: CanonBook.John,
     testament: Testament.New,
@@ -448,6 +835,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Acts]: {
     name: {
       [Language.English]: 'Acts',
+      [Language.Spanish]: 'Hechos',
+      [Language.Chinese]: '使 徒 行 傳',
+      [Language.Korean]: '사도행전',
+      [Language.Japanese]: '使徒の働き',
+      [Language.Portuguese]: 'Atos',
+      [Language.French]: 'Actes',
+      [Language.German]: 'Apostelgeschichte',
+      [Language.Italian]: 'Atti',
+      [Language.Hindi]: 'प्रेरितों के काम',
     },
     abbreviation: CanonBook.Acts,
     testament: Testament.New,
@@ -458,6 +854,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Romans]: {
     name: {
       [Language.English]: 'Romans',
+      [Language.Spanish]: 'Romanos',
+      [Language.Chinese]: '羅 馬 書',
+      [Language.Korean]: '로마서',
+      [Language.Japanese]: 'ローマ人への手紙',
+      [Language.Portuguese]: 'Romanos',
+      [Language.French]: 'Romains',
+      [Language.German]: 'Roemer',
+      [Language.Italian]: 'Romani',
+      [Language.Hindi]: 'रोमियों',
     },
     abbreviation: CanonBook.Romans,
     testament: Testament.New,
@@ -468,6 +873,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstCorinthians]: {
     name: {
       [Language.English]: '1 Corinthians',
+      [Language.Spanish]: '1 Corintios',
+      [Language.Chinese]: '歌 林 多 前 書',
+      [Language.Korean]: '고린도전서',
+      [Language.Japanese]: 'コリント人への手紙Ⅰ',
+      [Language.Portuguese]: '1 Coríntios',
+      [Language.French]: '1 Corinthiens',
+      [Language.German]: '1 Korinther',
+      [Language.Italian]: '1 Corinzi',
+      [Language.Hindi]: '1 कुरिन्थियों',
     },
     abbreviation: CanonBook.FirstCorinthians,
     testament: Testament.New,
@@ -478,6 +892,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondCorinthians]: {
     name: {
       [Language.English]: '2 Corinthians',
+      [Language.Spanish]: '2 Corintios',
+      [Language.Chinese]: '歌 林 多 後 書',
+      [Language.Korean]: '고린도후서',
+      [Language.Japanese]: 'コリント人への手紙Ⅱ',
+      [Language.Portuguese]: '2 Coríntios',
+      [Language.French]: '2 Corinthiens',
+      [Language.German]: '2 Korinther',
+      [Language.Italian]: '2 Corinzi',
+      [Language.Hindi]: '2 कुरिन्थियों',
     },
     abbreviation: CanonBook.SecondCorinthians,
     testament: Testament.New,
@@ -488,6 +911,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Galatians]: {
     name: {
       [Language.English]: 'Galatians',
+      [Language.Spanish]: 'Gálatas',
+      [Language.Chinese]: '加 拉 太 書',
+      [Language.Korean]: '갈라디아서',
+      [Language.Japanese]: 'ガラテヤ人への手紙',
+      [Language.Portuguese]: 'Gálatas',
+      [Language.French]: 'Galates',
+      [Language.German]: 'Galater',
+      [Language.Italian]: 'Galati',
+      [Language.Hindi]: 'गलातियों',
     },
     abbreviation: CanonBook.Galatians,
     testament: Testament.New,
@@ -498,6 +930,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Ephesians]: {
     name: {
       [Language.English]: 'Ephesians',
+      [Language.Spanish]: 'Efesios',
+      [Language.Chinese]: '以 弗 所 書',
+      [Language.Korean]: '에베소서',
+      [Language.Japanese]: 'エペソ人への手紙',
+      [Language.Portuguese]: 'Efésios',
+      [Language.French]: 'Éphésiens',
+      [Language.German]: 'Epheser',
+      [Language.Italian]: 'Efesini',
+      [Language.Hindi]: 'इफिसियों',
     },
     abbreviation: CanonBook.Ephesians,
     testament: Testament.New,
@@ -508,6 +949,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Philippians]: {
     name: {
       [Language.English]: 'Philippians',
+      [Language.Spanish]: 'Filipenses',
+      [Language.Chinese]: '腓 立 比 書',
+      [Language.Korean]: '빌립보서',
+      [Language.Japanese]: 'ピリピ人への手紙',
+      [Language.Portuguese]: 'Filipenses',
+      [Language.French]: 'Philippiens',
+      [Language.German]: 'Philipper',
+      [Language.Italian]: 'Filippesi',
+      [Language.Hindi]: 'फिलिप्पियों',
     },
     abbreviation: CanonBook.Philippians,
     testament: Testament.New,
@@ -518,6 +968,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Colossians]: {
     name: {
       [Language.English]: 'Colossians',
+      [Language.Spanish]: 'Colosenses',
+      [Language.Chinese]: '歌 羅 西 書',
+      [Language.Korean]: '골로새서',
+      [Language.Japanese]: 'コロサイ人への手紙',
+      [Language.Portuguese]: 'Colossenses',
+      [Language.French]: 'Colossiens',
+      [Language.German]: 'Kolosser',
+      [Language.Italian]: 'Colossesi',
+      [Language.Hindi]: 'कुलुस्सियों',
     },
     abbreviation: CanonBook.Colossians,
     testament: Testament.New,
@@ -528,6 +987,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstThessalonians]: {
     name: {
       [Language.English]: '1 Thessalonians',
+      [Language.Spanish]: '1 Tesalonicenses',
+      [Language.Chinese]: '帖 撒 羅 尼 迦 前 書',
+      [Language.Korean]: '데살로니가전서',
+      [Language.Japanese]: 'テサロニケ人への手紙Ⅰ',
+      [Language.Portuguese]: '1 Tessalonicenses',
+      [Language.French]: '1 Thessaloniciens',
+      [Language.German]: '1 Thessalonicher',
+      [Language.Italian]: '1 Tessalonicesi',
+      [Language.Hindi]: '1 थिस्सलुनीकियों',
     },
     abbreviation: CanonBook.FirstThessalonians,
     testament: Testament.New,
@@ -538,6 +1006,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondThessalonians]: {
     name: {
       [Language.English]: '2 Thessalonians',
+      [Language.Spanish]: '2 Tesalonicenses',
+      [Language.Chinese]: '帖 撒 羅 尼 迦 後 書',
+      [Language.Korean]: '데살로니가후서',
+      [Language.Japanese]: 'テサロニケ人への手紙Ⅱ',
+      [Language.Portuguese]: '2 Tessalonicenses',
+      [Language.French]: '2 Thessaloniciens',
+      [Language.German]: '2 Thessalonicher',
+      [Language.Italian]: '2 Tessalonicesi',
+      [Language.Hindi]: '2 थिस्सलुनीकियों',
     },
     abbreviation: CanonBook.SecondThessalonians,
     testament: Testament.New,
@@ -548,6 +1025,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstTimothy]: {
     name: {
       [Language.English]: '1 Timothy',
+      [Language.Spanish]: '1 Timoteo',
+      [Language.Chinese]: '提 摩 太 前 書',
+      [Language.Korean]: '디모데전서',
+      [Language.Japanese]: 'テモテへの手紙Ⅰ',
+      [Language.Portuguese]: '1 Timóteo',
+      [Language.French]: '1 Timothée',
+      [Language.German]: '1 Timotheus',
+      [Language.Italian]: '1 Timoteo',
+      [Language.Hindi]: '1 तीमुथियुस',
     },
     abbreviation: CanonBook.FirstTimothy,
     testament: Testament.New,
@@ -558,6 +1044,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondTimothy]: {
     name: {
       [Language.English]: '2 Timothy',
+      [Language.Spanish]: '2 Timoteo',
+      [Language.Chinese]: '提 摩 太 後 書',
+      [Language.Korean]: '디모데후서',
+      [Language.Japanese]: 'テモテへの手紙Ⅱ',
+      [Language.Portuguese]: '2 Timóteo',
+      [Language.French]: '2 Timothée',
+      [Language.German]: '2 Timotheus',
+      [Language.Italian]: '2 Timoteo',
+      [Language.Hindi]: '2 तीमुथियुस',
     },
     abbreviation: CanonBook.SecondTimothy,
     testament: Testament.New,
@@ -568,6 +1063,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Titus]: {
     name: {
       [Language.English]: 'Titus',
+      [Language.Spanish]: 'Tito',
+      [Language.Chinese]: '提 多 書',
+      [Language.Korean]: '디도서',
+      [Language.Japanese]: 'テトスへの手紙',
+      [Language.Portuguese]: 'Tito',
+      [Language.French]: 'Tite',
+      [Language.German]: 'Titus',
+      [Language.Italian]: 'Tito',
+      [Language.Hindi]: 'तीतुस',
     },
     abbreviation: CanonBook.Titus,
     testament: Testament.New,
@@ -578,6 +1082,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Philemon]: {
     name: {
       [Language.English]: 'Philemon',
+      [Language.Spanish]: 'Filemón',
+      [Language.Chinese]: '腓 利 門 書',
+      [Language.Korean]: '빌레몬서',
+      [Language.Japanese]: 'ピレモンへの手紙',
+      [Language.Portuguese]: 'Filemom',
+      [Language.French]: 'Philémon',
+      [Language.German]: 'Philemon',
+      [Language.Italian]: 'Filemone',
+      [Language.Hindi]: 'फिलेमोन',
     },
     abbreviation: CanonBook.Philemon,
     testament: Testament.New,
@@ -588,6 +1101,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Hebrews]: {
     name: {
       [Language.English]: 'Hebrews',
+      [Language.Spanish]: 'Hebreos',
+      [Language.Chinese]: '希 伯 來 書',
+      [Language.Korean]: '히브리서',
+      [Language.Japanese]: 'へブル人への手紙',
+      [Language.Portuguese]: 'Hebreus',
+      [Language.French]: 'Hébreux',
+      [Language.German]: 'Hebraeer',
+      [Language.Italian]: 'Ebrei',
+      [Language.Hindi]: 'इब्रानियों',
     },
     abbreviation: CanonBook.Hebrews,
     testament: Testament.New,
@@ -598,6 +1120,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.James]: {
     name: {
       [Language.English]: 'James',
+      [Language.Spanish]: 'Santiago',
+      [Language.Chinese]: '雅 各 書',
+      [Language.Korean]: '야고보서',
+      [Language.Japanese]: 'ヤコブの手紙',
+      [Language.Portuguese]: 'Tiago',
+      [Language.French]: 'Jacques',
+      [Language.German]: 'Jakobus',
+      [Language.Italian]: 'Giacomo',
+      [Language.Hindi]: 'याकूब',
     },
     abbreviation: CanonBook.James,
     testament: Testament.New,
@@ -608,6 +1139,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstPeter]: {
     name: {
       [Language.English]: '1 Peter',
+      [Language.Spanish]: '1 Pedro',
+      [Language.Chinese]: '彼 得 前 書',
+      [Language.Korean]: '베드로전서',
+      [Language.Japanese]: 'ペテロの手紙Ⅰ',
+      [Language.Portuguese]: '1 Pedro',
+      [Language.French]: '1 Pierre',
+      [Language.German]: '1 Petrus',
+      [Language.Italian]: '1 Pietro',
+      [Language.Hindi]: '1 पतरस',
     },
     abbreviation: CanonBook.FirstPeter,
     testament: Testament.New,
@@ -618,6 +1158,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondPeter]: {
     name: {
       [Language.English]: '2 Peter',
+      [Language.Spanish]: '2 Pedro',
+      [Language.Chinese]: '彼 得 後 書',
+      [Language.Korean]: '베드로후서',
+      [Language.Japanese]: 'ペテロの手紙Ⅱ',
+      [Language.Portuguese]: '2 Pedro',
+      [Language.French]: '2 Pierre',
+      [Language.German]: '2 Petrus',
+      [Language.Italian]: '2 Pietro',
+      [Language.Hindi]: '2 पतरस',
     },
     abbreviation: CanonBook.SecondPeter,
     testament: Testament.New,
@@ -628,6 +1177,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.FirstJohn]: {
     name: {
       [Language.English]: '1 John',
+      [Language.Spanish]: '1 Juan',
+      [Language.Chinese]: '約 翰 一 書',
+      [Language.Korean]: '요한일서',
+      [Language.Japanese]: 'ヨハネの手紙Ⅰ',
+      [Language.Portuguese]: '1 João',
+      [Language.French]: '1 Jean',
+      [Language.German]: '1 Johannes',
+      [Language.Italian]: '1 Giovanni',
+      [Language.Hindi]: '1 यूहन्ना',
     },
     abbreviation: CanonBook.FirstJohn,
     testament: Testament.New,
@@ -638,6 +1196,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.SecondJohn]: {
     name: {
       [Language.English]: '2 John',
+      [Language.Spanish]: '2 Juan',
+      [Language.Chinese]: '約 翰 二 書',
+      [Language.Korean]: '요한이서',
+      [Language.Japanese]: 'ヨハネの手紙Ⅱ',
+      [Language.Portuguese]: '2 João',
+      [Language.French]: '2 Jean',
+      [Language.German]: '2 Johannes',
+      [Language.Italian]: '2 Giovanni',
+      [Language.Hindi]: '2 यूहन्ना',
     },
     abbreviation: CanonBook.SecondJohn,
     testament: Testament.New,
@@ -648,6 +1215,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.ThirdJohn]: {
     name: {
       [Language.English]: '3 John',
+      [Language.Spanish]: '3 Juan',
+      [Language.Chinese]: '約 翰 三 書',
+      [Language.Korean]: '요한삼서',
+      [Language.Japanese]: 'ヨハネの手紙Ⅲ',
+      [Language.Portuguese]: '3 João',
+      [Language.French]: '3 Jean',
+      [Language.German]: '3 Johannes',
+      [Language.Italian]: '3 Giovanni',
+      [Language.Hindi]: '3 यूहन्ना',
     },
     abbreviation: CanonBook.ThirdJohn,
     testament: Testament.New,
@@ -658,6 +1234,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Jude]: {
     name: {
       [Language.English]: 'Jude',
+      [Language.Spanish]: 'Judas',
+      [Language.Chinese]: '猶 大 書',
+      [Language.Korean]: '유다서',
+      [Language.Japanese]: 'ユダの手紙',
+      [Language.Portuguese]: 'Judas',
+      [Language.French]: 'Jude',
+      [Language.German]: 'Judas',
+      [Language.Italian]: 'Giuda',
+      [Language.Hindi]: 'यहूदा',
     },
     abbreviation: CanonBook.Jude,
     testament: Testament.New,
@@ -668,6 +1253,15 @@ export const CanonBooks: CanonData = {
   [CanonBook.Revelation]: {
     name: {
       [Language.English]: 'Revelation',
+      [Language.Spanish]: 'Apocalipsis',
+      [Language.Chinese]: '启 示 录',
+      [Language.Korean]: '요한계시록',
+      [Language.Japanese]: 'ヨハネの黙示録',
+      [Language.Portuguese]: 'Apocalipse',
+      [Language.French]: 'Apocalypse',
+      [Language.German]: 'Offenbarung',
+      [Language.Italian]: 'Apocalisse',
+      [Language.Hindi]: 'प्रकाशित वाक्य',
     },
     abbreviation: CanonBook.Revelation,
     testament: Testament.New,
@@ -684,6 +1278,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Tobit]: {
     name: {
       [Language.English]: 'Tobit',
+      [Language.Spanish]: 'Tobit',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: 'Tobi',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Tobit,
     testament: Testament.Old,
@@ -694,6 +1297,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Judith]: {
     name: {
       [Language.English]: 'Judith',
+      [Language.Spanish]: 'Judit',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: 'Giuditta',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Judith,
     testament: Testament.Old,
@@ -704,6 +1316,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.GreekEsther]: {
     name: {
       [Language.English]: 'Greek Esther',
+      [Language.Spanish]: 'Ester Griego',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.GreekEsther,
     testament: Testament.Old,
@@ -714,6 +1335,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Wisdom]: {
     name: {
       [Language.English]: 'Wisdom',
+      [Language.Spanish]: 'Sabiduría',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: 'Sapienza',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Wisdom,
     testament: Testament.Old,
@@ -724,6 +1354,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Sirach]: {
     name: {
       [Language.English]: 'Sirach',
+      [Language.Spanish]: 'Eclesiástico',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: 'Siracide',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Sirach,
     testament: Testament.Old,
@@ -734,6 +1373,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Baruch]: {
     name: {
       [Language.English]: 'Baruch',
+      [Language.Spanish]: 'Baruc',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: 'Baruc',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Baruch,
     testament: Testament.Old,
@@ -744,6 +1392,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.LetterOfJeremiah]: {
     name: {
       [Language.English]: 'Letter of Jeremiah',
+      [Language.Spanish]: 'Carta de Jeremías',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.LetterOfJeremiah,
     testament: Testament.Old,
@@ -754,6 +1411,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.PrayerOfAzariah]: {
     name: {
       [Language.English]: 'Prayer of Azariah',
+      [Language.Spanish]: 'Oración de Azarías',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.PrayerOfAzariah,
     testament: Testament.Old,
@@ -764,6 +1430,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.Susanna]: {
     name: {
       [Language.English]: 'Susanna',
+      [Language.Spanish]: 'Susana',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.Susanna,
     testament: Testament.Old,
@@ -774,6 +1449,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.BelAndTheDragon]: {
     name: {
       [Language.English]: 'Bel and the Dragon',
+      [Language.Spanish]: 'Bel y el Dragón',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.BelAndTheDragon,
     testament: Testament.Old,
@@ -784,6 +1468,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.FirstMaccabees]: {
     name: {
       [Language.English]: '1 Maccabees',
+      [Language.Spanish]: '1 Macabeos',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '1 Maccabei',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.FirstMaccabees,
     testament: Testament.Old,
@@ -794,6 +1487,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.SecondMaccabees]: {
     name: {
       [Language.English]: '2 Maccabees',
+      [Language.Spanish]: '2 Macabeos',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '2 Maccabei',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.SecondMaccabees,
     testament: Testament.Old,
@@ -804,6 +1506,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.FirstEsdras]: {
     name: {
       [Language.English]: '1 Esdras',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.FirstEsdras,
     testament: Testament.Old,
@@ -814,6 +1525,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.PrayerOfManasseh]: {
     name: {
       [Language.English]: 'Prayer of Manasseh',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.PrayerOfManasseh,
     testament: Testament.Old,
@@ -824,6 +1544,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.PsalmOneFiftyOne]: {
     name: {
       [Language.English]: 'Psalm 151',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.PsalmOneFiftyOne,
     testament: Testament.Old,
@@ -834,6 +1563,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.ThirdMaccabees]: {
     name: {
       [Language.English]: '3 Maccabees',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.ThirdMaccabees,
     testament: Testament.Old,
@@ -844,6 +1582,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.SecondEsdras]: {
     name: {
       [Language.English]: '2 Esdras',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.SecondEsdras,
     testament: Testament.Old,
@@ -854,6 +1601,15 @@ export const DeuterocanonBooks: DeuterocanonData = {
   [DeuterocanonBook.FourthMaccabees]: {
     name: {
       [Language.English]: '4 Maccabees',
+      [Language.Spanish]: '',
+      [Language.Chinese]: '',
+      [Language.Korean]: '',
+      [Language.Japanese]: '',
+      [Language.Portuguese]: '',
+      [Language.French]: '',
+      [Language.German]: '',
+      [Language.Italian]: '',
+      [Language.Hindi]: '',
     },
     abbreviation: DeuterocanonBook.FourthMaccabees,
     testament: Testament.Old,
@@ -979,40 +1735,17 @@ export type DeuterocanonNameLookupMap = { [language in Language]: CaseInsensitiv
  * @returns Array of name => key pairs.
  */
 function generateDefaultNameLookupForCanon(language: Language): [string, CanonBook][] {
-  return Object.entries(CanonBooks)
-    .map(
-      ([key, data]) =>
-        [
-          [key, key],
-          [data.name[language], key],
-        ] as [string, CanonBook][],
-    )
-    .flat();
-}
-
-/**
- *  Generates a mapping of names in a given language to DeuterocanonBook key.
- * @param language Language to generate entries for.
- * @returns Array of name => key pairs.
- */
-function generateDefaultNameLookupForDeuterocanon(language: Language): [string, DeuterocanonBook][] {
-  return Object.entries(DeuterocanonBooks)
-    .map(
-      ([key, data]) =>
-        [
-          [key, key],
-          [data.name[language], key],
-        ] as [string, DeuterocanonBook][],
-    )
-    .flat();
-}
-
-/**
- * Map for quick lookup of a book of the canon by name and language.
- */
-export const CanonNameLookup: CanonNameLookupMap = {
-  [Language.English]: new CaseInsensitiveMap([
-    ...generateDefaultNameLookupForCanon(Language.English),
+  return [
+    ...Object.entries(CanonBooks)
+      .map(
+        ([key, data]) =>
+          [
+            [key, key],
+            [data.name[language], key],
+          ] as [string, CanonBook][],
+      )
+      .flat(),
+    // Abbreviations do not contain spaces, but we allow them to on lookup.
     ['EX', CanonBook.Exodus],
     ['1 SAM', CanonBook.FirstSamuel],
     ['2 SAM', CanonBook.SecondSamuel],
@@ -1035,19 +1768,26 @@ export const CanonNameLookup: CanonNameLookupMap = {
     ['1 JOHN', CanonBook.FirstJohn],
     ['2 JOHN', CanonBook.SecondJohn],
     ['3 JOHN', CanonBook.ThirdJohn],
-    ['Song of Solomon', CanonBook.SongOfSongs],
-    ['Psalms', CanonBook.Psalm],
-    ['Acts of the Apostles', CanonBook.Acts],
-    ['Phillippians', CanonBook.Philippians],
-  ]),
-};
+  ];
+}
 
 /**
- * Map for quick lookup of a book of the deuterocanon by name and language.
+ *  Generates a mapping of names in a given language to DeuterocanonBook key.
+ * @param language Language to generate entries for.
+ * @returns Array of name => key pairs.
  */
-export const DeuterocanonNameLookup: DeuterocanonNameLookupMap = {
-  [Language.English]: new CaseInsensitiveMap([
-    ...generateDefaultNameLookupForDeuterocanon(Language.English),
+function generateDefaultNameLookupForDeuterocanon(language: Language): [string, DeuterocanonBook][] {
+  return [
+    ...Object.entries(DeuterocanonBooks)
+      .map(
+        ([key, data]) =>
+          [
+            [key, key],
+            [data.name[language], key],
+          ] as [string, DeuterocanonBook][],
+      )
+      .flat(),
+    // Abbreviations do not contain spaces, but we allow them to on lookup.
     ['GK ESTH', DeuterocanonBook.GreekEsther],
     ['EP JER', DeuterocanonBook.LetterOfJeremiah],
     ['PR AZAR', DeuterocanonBook.PrayerOfAzariah],
@@ -1058,11 +1798,51 @@ export const DeuterocanonNameLookup: DeuterocanonNameLookupMap = {
     ['PS 151', DeuterocanonBook.PsalmOneFiftyOne],
     ['PSA151', DeuterocanonBook.PsalmOneFiftyOne],
     ['PSA 151', DeuterocanonBook.PsalmOneFiftyOne],
-    ['PSALM151', DeuterocanonBook.PsalmOneFiftyOne],
     ['3 MACC', DeuterocanonBook.ThirdMaccabees],
     ['2 ESD', DeuterocanonBook.SecondEsdras],
     ['4 MACC', DeuterocanonBook.FourthMaccabees],
+  ];
+}
+
+/**
+ * Map for quick lookup of a book of the canon by name and language.
+ */
+export const CanonNameLookup: CanonNameLookupMap = {
+  [Language.English]: new CaseInsensitiveMap([
+    ...generateDefaultNameLookupForCanon(Language.English),
+    ['Song of Solomon', CanonBook.SongOfSongs],
+    ['Psalms', CanonBook.Psalm],
+    ['Acts of the Apostles', CanonBook.Acts],
+    ['Phillippians', CanonBook.Philippians],
   ]),
+  [Language.Spanish]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Spanish)),
+  [Language.Chinese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Chinese)),
+  [Language.Korean]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Korean)),
+  [Language.Japanese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Japanese)),
+  [Language.Portuguese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Portuguese)),
+  [Language.French]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.French)),
+  [Language.German]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.German)),
+  [Language.Italian]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Italian)),
+  [Language.Hindi]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Hindi)),
+};
+
+/**
+ * Map for quick lookup of a book of the deuterocanon by name and language.
+ */
+export const DeuterocanonNameLookup: DeuterocanonNameLookupMap = {
+  [Language.English]: new CaseInsensitiveMap([
+    ...generateDefaultNameLookupForDeuterocanon(Language.English),
+    ['PSALM151', DeuterocanonBook.PsalmOneFiftyOne],
+  ]),
+  [Language.Spanish]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Spanish)),
+  [Language.Chinese]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Chinese)),
+  [Language.Korean]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Korean)),
+  [Language.Japanese]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Japanese)),
+  [Language.Portuguese]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Portuguese)),
+  [Language.French]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.French)),
+  [Language.German]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.German)),
+  [Language.Italian]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Italian)),
+  [Language.Hindi]: new CaseInsensitiveMap(generateDefaultNameLookupForDeuterocanon(Language.Hindi)),
 };
 
 /**

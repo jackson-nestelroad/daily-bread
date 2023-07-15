@@ -89,6 +89,200 @@ export const Versions: VersionsDictionary = {
       },
     ],
   ]),
+  [Language.Spanish]: new CaseInsensitiveMap([
+    [
+      'NTV',
+      {
+        abbreviation: 'NTV',
+        name: 'Nueva Traducción Viviente',
+      },
+    ],
+    [
+      'NVI',
+      {
+        abbreviation: 'NVI',
+        name: 'Nueva Versión Internacional',
+      },
+    ],
+    [
+      'RVC',
+      {
+        abbreviation: 'RVC',
+        name: 'Reina Valera Contemporánea',
+      },
+    ],
+    [
+      'RVR1960',
+      {
+        abbreviation: 'RVR1960',
+        name: 'Reina-Valera 1960',
+      },
+    ],
+    [
+      'RVA',
+      {
+        abbreviation: 'RVA',
+        name: 'Reina-Valera Antigua',
+      },
+    ],
+  ]),
+  [Language.Chinese]: new CaseInsensitiveMap([
+    [
+      'CCB',
+      {
+        abbreviation: 'CCB',
+        name: 'Chinese Contemporary Bible (Simplified)',
+      },
+    ],
+    [
+      'CCBT',
+      {
+        abbreviation: 'CCBT',
+        name: 'Chinese Contemporary Bible (Traditional)',
+      },
+    ],
+    [
+      'CNVS',
+      {
+        abbreviation: 'CNVS',
+        name: 'Chinese New Version (Simplified)',
+      },
+    ],
+    [
+      'CNVT',
+      {
+        abbreviation: 'CNVT',
+        name: 'Chinese New Version (Traditional)',
+      },
+    ],
+    [
+      'CUVS',
+      {
+        abbreviation: 'CUVS',
+        name: 'Chinese Union Version (Simplified)',
+      },
+    ],
+    [
+      'CUV',
+      {
+        abbreviation: 'CUV',
+        name: 'Chinese Union Version (Traditional)',
+      },
+    ],
+    [
+      'CUVMPS',
+      {
+        abbreviation: 'CUVMPS',
+        name: 'Chinese Union Version Modern Punctuation (Simplified)',
+      },
+    ],
+    [
+      'CUVMPT',
+      {
+        abbreviation: 'CUVMPT',
+        name: 'Chinese Union Version Modern Punctuation (Traditional)',
+      },
+    ],
+  ]),
+  [Language.Korean]: new CaseInsensitiveMap([
+    [
+      'KLB',
+      {
+        abbreviation: 'KLB',
+        name: 'Korean Living Bible',
+      },
+    ],
+  ]),
+  [Language.Japanese]: new CaseInsensitiveMap([
+    [
+      'JLB',
+      {
+        abbreviation: 'JLB',
+        name: 'Japenese Living Bible',
+      },
+    ],
+  ]),
+  [Language.Portuguese]: new CaseInsensitiveMap([
+    [
+      'ARC',
+      {
+        abbreviation: 'ARC',
+        name: 'Almeida Revista e Corrigida 2009',
+      },
+    ],
+    [
+      'NVT',
+      {
+        abbreviation: 'NVT',
+        name: 'Nova Versão Transformadora',
+      },
+    ],
+    [
+      'NVI-PT',
+      {
+        abbreviation: 'NVI-PT',
+        name: 'Nova Versão Internacional',
+      },
+    ],
+  ]),
+  [Language.French]: new CaseInsensitiveMap([
+    [
+      'LSG',
+      {
+        abbreviation: 'LSG',
+        name: 'Louis Segond',
+      },
+    ],
+    [
+      'NEG1979',
+      {
+        abbreviation: 'NEG1979',
+        name: 'Nouvelle Edition de Genève \u{2013} NEG1979',
+      },
+    ],
+  ]),
+  [Language.German]: new CaseInsensitiveMap([
+    [
+      'HOF',
+      {
+        abbreviation: 'HOF',
+        name: 'Hoffnung für Alle',
+      },
+    ],
+    [
+      'LUTH1545',
+      {
+        abbreviation: 'LUTH1545',
+        name: 'Luther Bibel 1545',
+      },
+    ],
+  ]),
+  [Language.Italian]: new CaseInsensitiveMap([
+    [
+      'CEI',
+      {
+        abbreviation: 'CEI',
+        name: 'Conferenza Episcopale Italiana',
+        deuterocanon: true,
+      },
+    ],
+    [
+      'NR2006',
+      {
+        abbreviation: 'NR2006',
+        name: 'Nuova Riveduta 2006',
+      },
+    ],
+  ]),
+  [Language.Hindi]: new CaseInsensitiveMap([
+    [
+      'ERV-HI',
+      {
+        abbreviation: 'ERV-HI',
+        name: 'Hindi Bible: Easy-to-Read Version',
+      },
+    ],
+  ]),
 };
 
 /**

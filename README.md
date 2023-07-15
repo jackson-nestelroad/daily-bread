@@ -151,7 +151,20 @@ console.log(votd.text);
 
 ### Setting Bible version
 
-`DailyBread` currently supports several popular English versions of the Bible: CEB, ESV, KJV, LEB, MSG, NIV, NKJV, and NLT.
+`DailyBread` currently supports several languages and translations. Language is tied to translation, so setting the Bible version will also use the associated language.
+
+The following languages and translations are supported:
+
+- **English:** CEB, ESV, KJV, LEB, MSG,NIV, NKJV, NLT.
+- **Spanish:** NTV, NVI, RVC, RVR1960, RVA.
+- **Chinese:** CCB, CCBT, CNVS, CNVT, CUVS, CUV, CUVMPS, CUVMPT.
+- **Korean:** KLB.
+- **Japanese:** JLB.
+- **Portuguese:** ARC, NVT, NVI-PT.
+- **French:** LSG, NEG1979.
+- **German:** HOF, LUTH1545.
+- **Italian:** CEI, NR2006.
+- **Hindi:** ERV-HI.
 
 The version currently being read can be changed directly on the `DailyBread` object:
 
@@ -237,4 +250,3 @@ npx daily-bread books
 ## Planned Features
 
 - Search for verses by word.
-- Support for more languages.

@@ -196,6 +196,96 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
         '    Blessed is the man\n      who walks not in the counsel of the wicked,\n    nor stands in the way of sinners,\n      nor sits in the seat of scoffers;\n\u{00B2}   but his delight is in the law of the Lord,\n      and on his law he meditates day and night.';
       assert.equal(passages[0].text, expected);
     });
+
+    it('should return a single verse in Spanish', async () => {
+      const scraper = new BibleGatewayWebScraper('RVC');
+      const passages = await scraper.passages('Romanos 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Romanos 12:2');
+      const expected =
+        '\u{00B2} Y no adopten las costumbres de este mundo, sino transfórmense por medio de la renovación de su mente, para que comprueben cuál es la voluntad de Dios, lo que es bueno, agradable y perfecto.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Chinese', async () => {
+      const scraper = new BibleGatewayWebScraper('CUVS');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, '羅 馬 書 12:2');
+      const expected =
+        '\u{00B2} 不 要 效 法 这 个 世 界 ， 只 要 心 意 更 新 而 变 化 ， 叫 你 们 察 验 何 为 神 的 善 良 、 纯 全 、 可 喜 悦 的 旨 意 。';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Korean', async () => {
+      const scraper = new BibleGatewayWebScraper('KLB');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, '로마서 12:2');
+      const expected =
+        '\u{00B2} 여러분은 이 세상을 본받지 말고 마음을 새롭게 하여 변화를 받으십시오. 그러면 하나님의 선하시고 기뻐하시고 완전하신 뜻이 무엇인지를 알게 될 것입니다.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Japanese', async () => {
+      const scraper = new BibleGatewayWebScraper('JLB');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'ローマ人への手紙 12:2');
+      const expected =
+        '\u{00B2} この世の人々の生活や考え方をまねてはいけません。むしろ、神に喜ばれることは何かを思いながら、なすこと考えることすべての面で生き生きとした、全く新しい人となりなさい。';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Portuguese', async () => {
+      const scraper = new BibleGatewayWebScraper('NVT');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Romanos 12:2');
+      const expected =
+        '\u{00B2} Não imitem o comportamento e os costumes deste mundo, mas deixem que Deus os transforme por meio de uma mudança em seu modo de pensar, a fim de que experimentem a boa, agradável e perfeita vontade de Deus para vocês.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in French', async () => {
+      const scraper = new BibleGatewayWebScraper('LSG');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Romains 12:2');
+      const expected =
+        "\u{00B2} Ne vous conformez pas au siècle présent, mais soyez transformés par le renouvellement de l'intelligence, afin que vous discerniez quelle est la volonté de Dieu, ce qui est bon, agréable et parfait.";
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in German', async () => {
+      const scraper = new BibleGatewayWebScraper('LUTH1545');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Roemer 12:2');
+      const expected =
+        '\u{00B2} Und stellet euch nicht dieser Welt gleich, sondern verändert euch durch die Erneuerung eures Sinnes, auf daß ihr prüfen möget, welches da sei der gute, wohlgefällige und vollkommene Gotteswille.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Italian', async () => {
+      const scraper = new BibleGatewayWebScraper('NR2006');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Romani 12:2');
+      const expected =
+        '\u{00B2} Non conformatevi a questo mondo, ma siate trasformati mediante il rinnovamento della vostra mente, affinché conosciate per esperienza quale sia la volontà di Dio, la buona, gradita e perfetta volontà.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return a single verse in Hindi', async () => {
+      const scraper = new BibleGatewayWebScraper('ERV-HI');
+      const passages = await scraper.passages('Romans 12:2');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'रोमियों 12:2');
+      const expected =
+        '\u{00B2} अब और आगे इस दुनिया की रीति पर मत चलो बल्कि अपने मनों को नया करके अपने आप को बदल डालो ताकि तुम्हें पता चल जाये कि परमेश्वर तुम्हारे लिए क्या चाहता है। यानी जो उत्तम है, जो उसे भाता है और जो सम्पूर्ण है।';
+      assert.equal(passages[0].text, expected);
+    });
   });
 
   describe('votd', () => {

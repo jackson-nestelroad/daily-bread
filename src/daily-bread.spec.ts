@@ -370,6 +370,7 @@ describe('DailyBread', () => {
       assert.isTrue(bible.isSupportedVersion('niv'));
       assert.isTrue(bible.isSupportedVersion('NLT'));
       assert.isTrue(bible.isSupportedVersion('Esv'));
+      assert.isTrue(bible.isSupportedVersion('CUVS'));
     });
 
     it('returns false for unsupported version', () => {

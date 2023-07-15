@@ -18,8 +18,33 @@ export enum Canon {
  * Currently supported languages.
  */
 export enum Language {
-  English = 'english',
+  English = 'EN',
+  Spanish = 'ES',
+  Chinese = 'ZH',
+  Korean = 'KO',
+  Japanese = 'JA',
+  Portuguese = 'PT',
+  French = 'FR',
+  German = 'DE',
+  Italian = 'IT',
+  Hindi = 'HI',
 }
+
+/**
+ * Display names for all languages.
+ */
+export const LanguageNames: { [language in Language]: string } = {
+  [Language.English]: 'English',
+  [Language.Spanish]: 'Español',
+  [Language.Chinese]: '汉语',
+  [Language.Korean]: '한국어',
+  [Language.Japanese]: '日本語',
+  [Language.Portuguese]: 'Português',
+  [Language.French]: 'Français',
+  [Language.German]: 'Deutsch',
+  [Language.Italian]: 'Italiano',
+  [Language.Hindi]: 'हिन्दी',
+};
 
 /**
  * Categories of books of the Bible.

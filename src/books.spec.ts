@@ -10,6 +10,9 @@ describe('findBook', () => {
 
   it('should find book from full name', () => {
     assert.equal(findBook('Exodus', Language.English), CanonBooks[CanonBook.Exodus]);
+    assert.equal(findBook('éxodo', Language.Spanish), CanonBooks[CanonBook.Exodus]);
+    assert.equal(findBook('出 埃 及 記', Language.Chinese), CanonBooks[CanonBook.Exodus]);
+    assert.equal(findBook('出エジプト記', Language.Japanese), CanonBooks[CanonBook.Exodus]);
   });
 
   it('should ignore character case', () => {
