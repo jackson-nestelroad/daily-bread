@@ -38,4 +38,10 @@ describe('findBook', () => {
     assert.equal(findBook(DeuterocanonBook.Baruch, Language.English, true), DeuterocanonBooks[DeuterocanonBook.Baruch]);
     assert.equal(findBook('Psalm 151', Language.English, true), DeuterocanonBooks[DeuterocanonBook.PsalmOneFiftyOne]);
   });
+
+  it('should find book in Chinese', () => {
+    assert.equal(findBook(CanonBook.Matthew, Language.Chinese), CanonBooks[CanonBook.Matthew]);
+    assert.equal(findBook('馬 太 福 音', Language.Chinese), CanonBooks[CanonBook.Matthew]);
+    assert.equal(findBook('馬太福音', Language.Chinese), CanonBooks[CanonBook.Matthew]);
+  });
 });

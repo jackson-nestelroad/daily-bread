@@ -1771,6 +1771,13 @@ function generateDefaultNameLookupForCanon(language: Language): [string, CanonBo
   ];
 }
 
+function generateExtraNamesForChineseLanguage(): [string, CanonBook][] {
+  return Object.values(CanonBooks).map(({ name, abbreviation }) => [
+    name[Language.Chinese].replace(/ /g, ''),
+    abbreviation,
+  ]);
+}
+
 /**
  *  Generates a mapping of names in a given language to DeuterocanonBook key.
  * @param language Language to generate entries for.
@@ -1816,7 +1823,10 @@ export const CanonNameLookup: CanonNameLookupMap = {
     ['Phillippians', CanonBook.Philippians],
   ]),
   [Language.Spanish]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Spanish)),
-  [Language.Chinese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Chinese)),
+  [Language.Chinese]: new CaseInsensitiveMap([
+    ...generateDefaultNameLookupForCanon(Language.Chinese),
+    ...generateExtraNamesForChineseLanguage(),
+  ]),
   [Language.Korean]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Korean)),
   [Language.Japanese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Japanese)),
   [Language.Portuguese]: new CaseInsensitiveMap(generateDefaultNameLookupForCanon(Language.Portuguese)),
