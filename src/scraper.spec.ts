@@ -213,7 +213,7 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.lengthOf(passages, 1);
       assert.equal(passages[0].reference, '羅 馬 書 12:2');
       const expected =
-        '\u{00B2} 不 要 效 法 这 个 世 界 ， 只 要 心 意 更 新 而 变 化 ， 叫 你 们 察 验 何 为 神 的 善 良 、 纯 全 、 可 喜 悦 的 旨 意 。';
+        '\u{00B2} 不 要 效 法 这 个 世 界 \u{FF0C} 只 要 心 意 更 新 而 变 化 \u{FF0C} 叫 你 们 察 验 何 为 神 的 善 良 、 纯 全 、 可 喜 悦 的 旨 意 。';
       assert.equal(passages[0].text, expected);
     });
 
@@ -284,6 +284,26 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.equal(passages[0].reference, 'रोमियों 12:2');
       const expected =
         '\u{00B2} अब और आगे इस दुनिया की रीति पर मत चलो बल्कि अपने मनों को नया करके अपने आप को बदल डालो ताकि तुम्हें पता चल जाये कि परमेश्वर तुम्हारे लिए क्या चाहता है। यानी जो उत्तम है, जो उसे भाता है और जो सम्पूर्ण है।';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should return Psalm 27:14 in ESV', async () => {
+      const scraper = new BibleGatewayWebScraper('ESV');
+      const passages = await scraper.passages('Psalm 27:14');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Psalm 27:14');
+      const expected =
+        '    \u{00B9}\u{2074} Wait for the Lord;\n      be strong, and let your heart take courage;\n      wait for the Lord!';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should add small hyphens for number ranges in MSG', async () => {
+      const scraper = new BibleGatewayWebScraper('MSG');
+      const passages = await scraper.passages('Psalm 27:14');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Psalm 27:14');
+      const expected =
+        '\u{00B9}\u{00B3}\u{207B}\u{00B9}\u{2074} I\u{2019}m sure now I\u{2019}ll see God\u{2019}s goodness\n      in the exuberant earth.\n    Stay with God!\n      Take heart. Don\u{2019}t quit.\n    I\u{2019}ll say it again:\n      Stay with God.';
       assert.equal(passages[0].text, expected);
     });
   });

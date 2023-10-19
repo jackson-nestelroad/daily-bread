@@ -28,17 +28,23 @@ export const SuperscriptNumbers: { [char: string]: string } = {
   '7': '\u{2077}',
   '8': '\u{2078}',
   '9': '\u{2079}',
+  '-': '\u{207B}',
 };
 
 const SuperscriptWithSpaceRegex = new RegExp(`[${Object.values(SuperscriptNumbers).join('')}]+\\s?`, 'g');
 
 /**
- * Replaces numbers in the given string with their superscript equivalent.
+ * Replaces numbers or number ranges in the given string with their superscript equivalent.
  * @param str String.
  * @returns String with Unicode superscript numbers.
  */
 export function replaceNumbersWithSuperscript(str: string): string {
-  return str.replace(/\d/g, m => SuperscriptNumbers[m]);
+  return str.replace(/\d+-?\d*/g, m =>
+    m
+      .split('')
+      .map(c => SuperscriptNumbers[c])
+      .join(''),
+  );
 }
 
 /**
