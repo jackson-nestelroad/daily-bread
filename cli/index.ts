@@ -3,6 +3,7 @@ import { exit } from 'process';
 import yargs, { Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
+import { Language, LanguageNames } from '../src/bible.js';
 import {
   Canon,
   CanonicalOrder,
@@ -10,6 +11,7 @@ import {
   DailyBread,
   DeuterocanonicalOrder,
   Testament,
+  Versions,
   findBook,
 } from '../src/index.js';
 
@@ -197,6 +199,26 @@ yargs(hideBin(process.argv))
               throw new Error(`Failed to find book data for ${book}`);
             }
             console.log(bookData.name[versionData.language]);
+          }
+        }
+      }),
+  )
+  .command(
+    'versions',
+    'List all supported versions.',
+    () => {},
+    yargs =>
+      runCommand(async () => {
+        let first = true;
+        for (const [language, versions] of Object.entries(Versions)) {
+          if (first) {
+            first = false;
+          } else {
+            console.log();
+          }
+          console.log(`== ${LanguageNames[language as Language]} ==`);
+          for (const version of versions.values()) {
+            console.log(`${version.abbreviation} (${version.name})`);
           }
         }
       }),
