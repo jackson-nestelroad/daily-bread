@@ -114,11 +114,16 @@ export class BibleGatewayWebScraper implements BibleReader {
       passage.find('div.rp-passage-display-wrapper').remove();
     }
 
-    if (this.options.showVerseNumberForVerseOne) {
-      passage.find('span.chapternum').replaceWith('<sup class="versenum">1 </sup>');
-    } else {
-      passage.find('span.chapternum').remove();
-    }
+    passage.find('span.chapternum').each((i, el) => {
+      const chapterNum = $(el);
+      if (this.options.showVerseNumberForVerseOne) {
+        $('<sup class="versenum">1 </sup>').insertAfter(chapterNum);
+      }
+      if (this.options.showChapterNumbers) {
+        $(`<p>(Ch ${chapterNum.text().trim()}) </p>`).insertAfter(chapterNum);
+      }
+      chapterNum.remove();
+    });
 
     // Replace line breaks with newlines.
     passage.find('br').replaceWith('\n');

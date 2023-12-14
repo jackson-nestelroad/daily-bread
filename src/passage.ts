@@ -33,6 +33,10 @@ export interface PassageFormattingOptions {
    * Default is false.
    */
   showVerseNumberForVerseOne?: boolean;
+  /**
+   * Whether or not to show chapter numbers at the start of each new chapter.
+   */
+  showChapterNumbers?: boolean;
 }
 
 /**
@@ -44,6 +48,7 @@ export const DefaultPassageFormattingOptions: Required<PassageFormattingOptions>
   allowUnicodePunctuation: true,
   preserveSmallCaps: false,
   showVerseNumberForVerseOne: false,
+  showChapterNumbers: false,
 };
 
 /**

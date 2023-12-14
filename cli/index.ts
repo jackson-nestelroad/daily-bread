@@ -16,11 +16,13 @@ import {
 enum DailyBreadOptions {
   Version = 'version',
   ShowVerseNumbers = 'verse-numbers',
+  showChapterNumbers = 'chapter-numbers',
 }
 
 interface DailyBreadCreationOptions {
   version?: string;
   showVerseNumbers?: boolean;
+  showChapterNumbers?: boolean;
 }
 
 function runCommand(fn: () => Promise<void>) {
@@ -40,17 +42,25 @@ function createDailyBread(options: DailyBreadCreationOptions): DailyBread {
   }
   bible.setFormatting({
     showVerseNumbers: options.showVerseNumbers ?? false,
+    showChapterNumbers: options.showChapterNumbers ?? false,
   });
   return bible;
 }
 
 function passageCommandOptions<T>(yargs: Argv<T>) {
-  return yargs.options(DailyBreadOptions.ShowVerseNumbers, {
-    alias: 'n',
-    type: 'boolean',
-    describe: 'Show verse numbers?',
-    default: true,
-  });
+  return yargs
+    .options(DailyBreadOptions.ShowVerseNumbers, {
+      alias: 'n',
+      type: 'boolean',
+      describe: 'Show verse numbers?',
+      default: true,
+    })
+    .options(DailyBreadOptions.showChapterNumbers, {
+      alias: 'c',
+      type: 'boolean',
+      describe: 'Show chapter numbers?',
+      default: true,
+    });
 }
 
 yargs(hideBin(process.argv))
@@ -75,6 +85,7 @@ yargs(hideBin(process.argv))
         const bible = createDailyBread({
           version: yargs.version,
           showVerseNumbers: yargs.verseNumbers,
+          showChapterNumbers: yargs.chapterNumbers,
         });
         const userInput = Array.isArray(yargs.passages) ? yargs.passages.join(' ') : yargs.passages;
         if (!userInput) {
@@ -101,6 +112,7 @@ yargs(hideBin(process.argv))
         const bible = createDailyBread({
           version: yargs.version,
           showVerseNumbers: yargs.verseNumbers,
+          showChapterNumbers: yargs.chapterNumbers,
         });
         const votd = await bible.votd();
         console.log(votd.reference);

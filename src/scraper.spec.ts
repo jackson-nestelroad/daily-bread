@@ -187,6 +187,34 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.equal(passages[0].text, expected);
     });
 
+    it('should add chapter numbers', async () => {
+      const scraper = new BibleGatewayWebScraper('NIV', { showChapterNumbers: true });
+      const passages = await scraper.passages('Matthew 17:1-2;Mark 8:1-2');
+      assert.lengthOf(passages, 2);
+      assert.equal(passages[0].reference, 'Matthew 17:1-2');
+      const first =
+        '(Ch 17) After six days Jesus took with him Peter, James and John the brother of James, and led them up a high mountain by themselves. \u{00B2} There he was transfigured before them. His face shone like the sun, and his clothes became as white as the light.';
+      assert.equal(passages[0].text, first);
+      assert.equal(passages[1].reference, 'Mark 8:1-2');
+      const second =
+        '(Ch 8) During those days another large crowd gathered. Since they had nothing to eat, Jesus called his disciples to him and said, \u{00B2} “I have compassion for these people; they have already been with me three days and have nothing to eat.';
+      assert.equal(passages[1].text, second);
+    });
+
+    it('should add chapter numbers and verse one', async () => {
+      const scraper = new BibleGatewayWebScraper('NIV', { showVerseNumberForVerseOne: true, showChapterNumbers: true });
+      const passages = await scraper.passages('Matthew 17:1-2;Mark 8:1-2');
+      assert.lengthOf(passages, 2);
+      assert.equal(passages[0].reference, 'Matthew 17:1-2');
+      const first =
+        '(Ch 17) \u{00B9} After six days Jesus took with him Peter, James and John the brother of James, and led them up a high mountain by themselves. \u{00B2} There he was transfigured before them. His face shone like the sun, and his clothes became as white as the light.';
+      assert.equal(passages[0].text, first);
+      assert.equal(passages[1].reference, 'Mark 8:1-2');
+      const second =
+        '(Ch 8) \u{00B9} During those days another large crowd gathered. Since they had nothing to eat, Jesus called his disciples to him and said, \u{00B2} “I have compassion for these people; they have already been with me three days and have nothing to eat.';
+      assert.equal(passages[1].text, second);
+    });
+
     it('should preserve poetry spacing in Psalms ESV', async () => {
       const scraper = new BibleGatewayWebScraper('ESV');
       const passages = await scraper.passages('Psalm 1:1-2');
