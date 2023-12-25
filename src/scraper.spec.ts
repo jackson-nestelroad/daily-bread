@@ -321,7 +321,7 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.lengthOf(passages, 1);
       assert.equal(passages[0].reference, 'Psalm 27:14');
       const expected =
-        '    \u{00B9}\u{2074} Wait for the Lord;\n      be strong, and let your heart take courage;\n      wait for the Lord!';
+        '\u{00B9}\u{2074}  Wait for the Lord;\n      be strong, and let your heart take courage;\n      wait for the Lord!';
       assert.equal(passages[0].text, expected);
     });
 
@@ -332,6 +332,16 @@ describe('BibleGatewayWebScraper', function (this: Suite) {
       assert.equal(passages[0].reference, 'Psalm 27:14');
       const expected =
         '\u{00B9}\u{00B3}\u{207B}\u{00B9}\u{2074} I\u{2019}m sure now I\u{2019}ll see God\u{2019}s goodness\n      in the exuberant earth.\n    Stay with God!\n      Take heart. Don\u{2019}t quit.\n    I\u{2019}ll say it again:\n      Stay with God.';
+      assert.equal(passages[0].text, expected);
+    });
+
+    it('should preserve poetry spacing for first verse', async () => {
+      const scraper = new BibleGatewayWebScraper('ESV');
+      const passages = await scraper.passages('Isaiah 9:5-6');
+      assert.lengthOf(passages, 1);
+      assert.equal(passages[0].reference, 'Isaiah 9:5-6');
+      const expected =
+        '\u{2075}   For every boot of the tramping warrior in battle tumult\n      and every garment rolled in blood\n      will be burned as fuel for the fire.\n\u{2076}   For to us a child is born,\n      to us a son is given;\n    and the government shall be upon his shoulder,\n      and his name shall be called\n    Wonderful Counselor, Mighty God,\n      Everlasting Father, Prince of Peace.';
       assert.equal(passages[0].text, expected);
     });
   });

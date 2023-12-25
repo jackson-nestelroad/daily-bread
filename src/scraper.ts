@@ -147,6 +147,7 @@ export class BibleGatewayWebScraper implements BibleReader {
       const poetry = $(el);
       let lines = poetry
         .text()
+        .trim()
         .split('\n')
         // Use padding of 4, because the maxiumum verse number is three digits long.
         .map(line => addPoetryPaddingToLine(line, 4));
