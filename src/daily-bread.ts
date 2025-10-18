@@ -108,7 +108,7 @@ export class DailyBread {
    * @param options Bible Gateway options.
    */
   public setBibleGatewayOptions(options: BibleGatewayWebScraperOptions): void {
-    this.bible_gateway_scraper_options = options;
+    this.bibleGatewayScraperOptions = options;
     this.resetScraper();
   }
 
@@ -260,14 +260,14 @@ export class DailyBread {
     this.scraper = new BibleGatewayWebScraper(
       this.version.abbreviation,
       this.scraper?.options,
-      this.bible_gateway_scraper_options,
+      this.bibleGatewayScraperOptions,
     );
   }
 
   private static readonly MaxVerseNumber = 200;
   private static readonly ChaptersPerCall = 5;
 
-  private bible_gateway_scraper_options: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions;
+  private bibleGatewayScraperOptions: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions;
   private scraper: BibleReader;
   private version: VersionData;
 }
