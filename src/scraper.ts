@@ -53,7 +53,7 @@ export class BibleGatewayWebScraper implements BibleReader {
   public constructor(
     private version: string,
     public options: PassageFormattingOptions = DefaultPassageFormattingOptions,
-    private scraperOpetions: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions,
+    private scraperOptions: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions,
   ) {
     this.axios = new Axios({
       baseURL: UrlConstant.Home,
@@ -96,7 +96,7 @@ export class BibleGatewayWebScraper implements BibleReader {
    * @returns Verse of the day.
    */
   public async votd(): Promise<Passage> {
-    if (this.scraperOpetions.useHomepageToReadVerseOfTheDay) {
+    if (this.scraperOptions.useHomepageToReadVerseOfTheDay) {
       const votd = await this.votdFromHomepage();
       const passages = await this.passages(votd);
       if (passages.length === 0) {
