@@ -7,7 +7,12 @@ import {
   formatPassageReference,
   parsePassageReferences,
 } from './reference.js';
-import { BibleGatewayWebScraper, BibleReader } from './scraper.js';
+import {
+  BibleGatewayWebScraper,
+  BibleGatewayWebScraperOptions,
+  BibleReader,
+  DefaultBibleGatewayWebScraperOptions,
+} from './scraper.js';
 import { splitRange } from './util/numbers.js';
 import { applyDefaults } from './util/options.js';
 import { DefaultVersion, VersionData, findVersion } from './versions.js';
@@ -95,6 +100,15 @@ export class DailyBread {
    */
   public setFormatting(options: PassageFormattingOptions): void {
     this.scraper.options = options;
+    this.resetScraper();
+  }
+
+  /**
+   * Sets options specific to the Bible Gateway scraper.
+   * @param options Bible Gateway options.
+   */
+  public setBibleGatewayOptions(options: BibleGatewayWebScraperOptions): void {
+    this.bible_gateway_scraper_options = options;
     this.resetScraper();
   }
 
@@ -243,12 +257,17 @@ export class DailyBread {
   }
 
   private resetScraper() {
-    this.scraper = new BibleGatewayWebScraper(this.version.abbreviation, this.scraper?.options);
+    this.scraper = new BibleGatewayWebScraper(
+      this.version.abbreviation,
+      this.scraper?.options,
+      this.bible_gateway_scraper_options,
+    );
   }
 
   private static readonly MaxVerseNumber = 200;
   private static readonly ChaptersPerCall = 5;
 
+  private bible_gateway_scraper_options: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions;
   private scraper: BibleReader;
   private version: VersionData;
 }

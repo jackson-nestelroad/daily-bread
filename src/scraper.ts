@@ -28,6 +28,17 @@ export interface BibleReader {
   options: PassageFormattingOptions;
 }
 
+export interface BibleGatewayWebScraperOptions {
+  /**
+   * Use the homepage to read the verse of the day indirectly.
+   */
+  useHomepageToReadVerseOfTheDay?: boolean;
+}
+
+export const DefaultBibleGatewayWebScraperOptions: Required<BibleGatewayWebScraperOptions> = {
+  useHomepageToReadVerseOfTheDay: false,
+};
+
 /**
  * Web scraper for the Bible Gateway website.
  */
@@ -42,6 +53,7 @@ export class BibleGatewayWebScraper implements BibleReader {
   public constructor(
     private version: string,
     public options: PassageFormattingOptions = DefaultPassageFormattingOptions,
+    private scraper_options: BibleGatewayWebScraperOptions = DefaultBibleGatewayWebScraperOptions,
   ) {
     this.axios = new Axios({
       baseURL: UrlConstant.Home,
@@ -84,6 +96,15 @@ export class BibleGatewayWebScraper implements BibleReader {
    * @returns Verse of the day.
    */
   public async votd(): Promise<Passage> {
+    if (this.scraper_options.useHomepageToReadVerseOfTheDay) {
+      const votd = await this.votdFromHomepage();
+      const passages = await this.passages(votd);
+      if (passages.length === 0) {
+        throw new Error(`Verse of the day from homepage (${votd}) yielded no passages`);
+      }
+      return passages[0];
+    }
+
     const response = await this.axios.request({
       method: 'get',
       url: UrlConstant.VerseOfTheDay,
@@ -95,6 +116,24 @@ export class BibleGatewayWebScraper implements BibleReader {
 
     const $ = cheerio.load(response.data);
     return this.parsePassage($, $('.rp-passage').get(0), true);
+  }
+
+  private async votdFromHomepage(): Promise<string> {
+    const response = await this.axios.request({
+      method: 'get',
+      url: '/',
+      params: {
+        version: this.version,
+        interface: UrlConstant.PrintInterface,
+      },
+    });
+
+    const $ = cheerio.load(response.data);
+    const reference = $('div.verse-bar span.citation').text();
+    if (!reference.length) {
+      throw new Error('Verse of the day could not be read from homepage');
+    }
+    return reference;
   }
 
   private parsePassage($: cheerio.CheerioAPI, el: cheerio.Element, readingPlan: boolean = false): Passage {
@@ -149,7 +188,7 @@ export class BibleGatewayWebScraper implements BibleReader {
         .text()
         .trim()
         .split('\n')
-        // Use padding of 4, because the maxiumum verse number is three digits long.
+        // Use padding of 4, because the maximum verse number is three digits long.
         .map(line => addPoetryPaddingToLine(line, 4));
 
       // After this point, we lose information about which lines are intended to be poetry.
@@ -161,7 +200,7 @@ export class BibleGatewayWebScraper implements BibleReader {
       poetry.replaceWith(`<p>${Markers.PoetryStart}${lines.join('\n')}</p>`);
     });
 
-    // Preserve paragraph paragraph spacing.
+    // Preserve paragraph spacing.
     passage.find('p').each((i, el) => {
       const paragraph = $(el);
       paragraph.replaceWith(

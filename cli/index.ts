@@ -18,13 +18,15 @@ import {
 enum DailyBreadOptions {
   Version = 'version',
   ShowVerseNumbers = 'verse-numbers',
-  showChapterNumbers = 'chapter-numbers',
+  ShowChapterNumbers = 'chapter-numbers',
+  UseHomepageForVotd = 'use-homepage-for-votd',
 }
 
 interface DailyBreadCreationOptions {
   version?: string;
   showVerseNumbers?: boolean;
   showChapterNumbers?: boolean;
+  useHomepageForVotd?: boolean;
 }
 
 function runCommand(fn: () => Promise<void>) {
@@ -46,6 +48,9 @@ function createDailyBread(options: DailyBreadCreationOptions): DailyBread {
     showVerseNumbers: options.showVerseNumbers ?? false,
     showChapterNumbers: options.showChapterNumbers ?? false,
   });
+  bible.setBibleGatewayOptions({
+    useHomepageToReadVerseOfTheDay: options.useHomepageForVotd ?? false,
+  });
   return bible;
 }
 
@@ -57,11 +62,16 @@ function passageCommandOptions<T>(yargs: Argv<T>) {
       describe: 'Show verse numbers?',
       default: true,
     })
-    .options(DailyBreadOptions.showChapterNumbers, {
+    .options(DailyBreadOptions.ShowChapterNumbers, {
       alias: 'c',
       type: 'boolean',
       describe: 'Show chapter numbers?',
       default: true,
+    })
+    .options(DailyBreadOptions.UseHomepageForVotd, {
+      type: 'boolean',
+      describe: 'Use Bible Gateway homepage for reading Verse of the Day?',
+      default: false,
     });
 }
 
@@ -88,6 +98,7 @@ yargs(hideBin(process.argv))
           version: yargs.version,
           showVerseNumbers: yargs.verseNumbers,
           showChapterNumbers: yargs.chapterNumbers,
+          useHomepageForVotd: yargs.useHomepageForVotd,
         });
         const userInput = Array.isArray(yargs.passages) ? yargs.passages.join(' ') : yargs.passages;
         if (!userInput) {
@@ -115,6 +126,7 @@ yargs(hideBin(process.argv))
           version: yargs.version,
           showVerseNumbers: yargs.verseNumbers,
           showChapterNumbers: yargs.chapterNumbers,
+          useHomepageForVotd: yargs.useHomepageForVotd,
         });
         const votd = await bible.votd();
         console.log(votd.reference);
