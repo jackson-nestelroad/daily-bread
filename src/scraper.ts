@@ -57,6 +57,9 @@ export class BibleGatewayWebScraper implements BibleReader {
   ) {
     this.axios = new Axios({
       baseURL: UrlConstant.Home,
+      validateStatus: status => {
+        return status >= 200 && status < 400;
+      },
     });
     applyDefaults(this.options, DefaultPassageFormattingOptions);
   }
