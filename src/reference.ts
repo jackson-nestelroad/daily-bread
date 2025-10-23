@@ -167,12 +167,12 @@ export function cleanPassageReference(passage: PassageReference, book: BookData,
 
 function formatReference(reference: Reference): string {
   let str = '';
-  if (reference.chapter !== null && reference.chapter !== undefined) {
+  if (isDefined(reference.chapter)) {
     str += reference.chapter;
-    if (reference.verse !== null && reference.verse !== undefined) {
+    if (isDefined(reference.verse)) {
       str += `:${reference.verse}`;
     }
-  } else if (reference.verse !== null && reference.verse !== undefined) {
+  } else if (isDefined(reference.verse)) {
     str += reference.verse;
   }
   return str;
