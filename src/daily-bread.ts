@@ -220,7 +220,7 @@ export class DailyBread {
       let index = 0;
 
       // If we are getting a partial part of the start or end chapter, get them separately.
-      // If not, include them in how we split the chapter into multple ranges to fetch.
+      // If not, include them in how we split the chapter into multiple ranges to fetch.
 
       if (startVerse !== 1) {
         promises.push(
