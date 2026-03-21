@@ -68,6 +68,14 @@ export const Versions: VersionsDictionary = {
       },
     ],
     [
+      'NABRE',
+      {
+        abbreviation: 'NABRE',
+        name: 'New American Bible (Revised Edition)',
+        deuterocanon: true,
+      },
+    ],
+    [
       'NIV',
       {
         abbreviation: 'NIV',
@@ -88,8 +96,46 @@ export const Versions: VersionsDictionary = {
         name: 'New Living Translation',
       },
     ],
+    [
+      'NRSVCE',
+      {
+        abbreviation: 'NRSVCE',
+        name: 'New Revised Standard Version Catholic Edition',
+        deuterocanon: true,
+      },
+    ],
+    [
+      'RSVCE',
+      {
+        abbreviation: 'RSVCE',
+        name: 'Revised Standard Version Catholic Edition',
+        deuterocanon: true,
+      },
+    ],
   ]),
   [Language.Spanish]: new CaseInsensitiveMap([
+    [
+      'BLP',
+      {
+        abbreviation: 'BLP',
+        name: 'La Palabra (España)',
+      },
+    ],
+    [
+      'BLPH',
+      {
+        abbreviation: 'BLPH',
+        name: 'La Palabra (Hispanoamérica)',
+      },
+    ],
+    [
+      'DHH',
+      {
+        abbreviation: 'DHH',
+        name: 'Dios Habla Hoy',
+        deuterocanon: true,
+      },
+    ],
     [
       'NTV',
       {
@@ -280,6 +326,16 @@ export const Versions: VersionsDictionary = {
       {
         abbreviation: 'ERV-HI',
         name: 'Hindi Bible: Easy-to-Read Version',
+      },
+    ],
+  ]),
+  [Language.Latin]: new CaseInsensitiveMap([
+    [
+      'VULGATE',
+      {
+        abbreviation: 'VULGATE',
+        name: 'Biblia Sacra Vulgata',
+        deuterocanon: true,
       },
     ],
   ]),

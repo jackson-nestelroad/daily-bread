@@ -28,6 +28,7 @@ export enum Language {
   German = 'DE',
   Italian = 'IT',
   Hindi = 'HI',
+  Latin = 'LA',
 }
 
 /**
@@ -44,6 +45,7 @@ export const LanguageNames: { [language in Language]: string } = {
   [Language.German]: 'Deutsch',
   [Language.Italian]: 'Italiano',
   [Language.Hindi]: 'हिन्दी',
+  [Language.Latin]: 'Latina',
 };
 
 /**
